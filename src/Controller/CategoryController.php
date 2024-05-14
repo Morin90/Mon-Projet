@@ -39,7 +39,7 @@ class CategoryController extends AbstractController
         ]);
     }
     /**
-     * This function allows to create a new category
+     * This controller allows to create a new category
      *
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -63,7 +63,7 @@ class CategoryController extends AbstractController
 return $this->render('pages/category/new.html.twig', ['form' => $form->createView()]);
     }
     /**
-     * This function allows to delete a category
+     * This controller allows to delete a category
      * @param  Categorie $velo
      * @param EntityManagerInterface $manager
      * @return Response
@@ -85,7 +85,7 @@ public function delete( Categorie $categorie,VeloRepository $veloRepository,Enti
     
     return $this->redirectToRoute('category.index');}
     /**
-     * This function allows to edit a category
+     * This controller allows to edit a category
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param  Categorie $categorie
