@@ -1,3 +1,21 @@
 body {
     background-color: white;
 }
+@import "bootstrap/scss/bootstrap.scss";
+.example-wrapper {
+    margin: 4em auto;
+    max-width: 800px;
+    width: 95%; 
+    font: 18px/1.5 sans-serif;
+    display:inline-grid;
+    grid-template-columns: repeat(8,1fr);
+    background-color: rgb(245, 245, 220);
+    padding: 2px 6px; 
+    border-radius: 5px;
+            }
+            .imageHome{
+                width: 40rem;
+                height: 25rem;
+                border-radius: 5%;
+            }
+

@@ -32,7 +32,7 @@ class Velo
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'velos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Categorie $categorie = null;
 
 //  Constructor
@@ -92,5 +92,9 @@ class Velo
         $this->categorie = $categorie;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 }

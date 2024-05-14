@@ -2,17 +2,115 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Categorie;
+use App\Entity\Velo;
+use App\Form\CategoryType;
+use App\Repository\CategorieRepository;
+use App\Repository\VeloRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class CategoryController extends AbstractController
 {
-    #[Route('/category', name: 'app_category')]
-    public function index(): Response
+        /**
+     * This controller display all category
+     *
+     * @param CategorieRepository $repository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
+
+    #[Route('/categorie', name: 'category.index', methods: ['GET'])]
+    public function index(PaginatorInterface $paginator, Request $request, CategorieRepository $repository): Response
     {
-        return $this->render('category/index.html.twig', [
-            'controller_name' => 'CategoryController',
+        $categories = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1), 
+            10 /*limit per page*/
+        );
+        return $this->render('pages/category/index.html.twig', [
+            'categories' => $categories,
         ]);
     }
+    /**
+     * This function allows to create a new category
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    #[Route('/categorie/new', name: 'category.new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $manager): Response {
+        $categorie = new Categorie();
+        $form = $this->createForm(CategoryType::class, $categorie);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categorie = $form->getData();
+            $manager->persist($categorie);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                'Votre catégorie a bien été créé avec succès !'
+            );
+        return $this->redirectToRoute('category.index');
+        }
+return $this->render('pages/category/new.html.twig', ['form' => $form->createView()]);
+    }
+    /**
+     * This function allows to delete a category
+     * @param  Categorie $velo
+     * @param EntityManagerInterface $manager
+     * @return Response
+     * @param VeloRepository $veloRepository
+     */
+    #[Route('/categorie/suppression/{id}', name: 'category.delete', methods: ['GET'])]
+public function delete( Categorie $categorie,VeloRepository $veloRepository,EntityManagerInterface $manager): Response {
+    $velo = $veloRepository->findBy(['categorie' => $categorie->getId()]);
+    foreach ($velo as $value) {
+        $value->setCategorie(null);
+    }
+    
+    $manager->remove($categorie);
+    $manager->flush();
+    $this->addFlash(
+        'success',
+        'Votre catégorie a bien été supprimé avec succès !'
+    );
+    
+    return $this->redirectToRoute('category.index');}
+    /**
+     * This function allows to edit a category
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param  Categorie $categorie
+     */
+    #[Route('/categorie/edition/{id}', name: 'category.edit', methods: ['GET', 'POST'])]
+public function edit(Request $request, EntityManagerInterface $manager, Categorie $categorie) : Response {
+        
+        $form = $this->createForm(CategoryType::class, $categorie);
+        $form ->handleRequest($request);
+        if ($form ->isSubmitted() && $form ->isValid()) {
+            $categorie = $form->getData();
+            $velo = $request->request->get('velos');
+            foreach($categorie->getVelos() as $velo){
+                $velo->setCategorie($categorie);
+                
+            }
+            $manager->persist($categorie);
+            $manager->persist($velo);
+            $manager->flush();
+            
+            $this->addFlash(
+                'success',
+                'Votre catégorie a bien été modifié avec succès !'
+            );
+            return $this->redirectToRoute('category.index');
+        }
+    return $this->render('pages/category/edit.html.twig', ['form' => $form->createView()]);}
 }

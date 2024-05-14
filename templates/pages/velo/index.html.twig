@@ -12,7 +12,7 @@
     </div>
 {% endfor %}
 {% if not velos.items is same as ([]) %}
-<h1>Nos Vélos</h1>
+<h1>Nos Vélos Admin</h1>
 <a href=" {{ path('velo.new') }}" class="btn btn-primary">
 Créer un Vélo
 </a>
@@ -20,7 +20,7 @@ Créer un Vélo
 <h4>Il y a {{velos.totalItemCount}} Vélos au total. </h4>
 </div>
 
-<table class="table table-hover mt-4">
+<table class="table table-hover mt-4 border border-primary-dark">
   <thead>
     <tr>
       <th scope="col">Numéro</th>
@@ -33,7 +33,7 @@ Créer un Vélo
   </thead>
   <tbody>
     {% for velo in velos %}
-    <tr class="table-primary">
+    <tr class="table-primary border border-primary-dark">
       <th scope="row">{{ velo.id}}</th>
       <td>{{ velo.name}}</td>
       <td>{{ velo.prix }}</td>
