@@ -9,6 +9,7 @@ use App\Entity\Categorie;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
+
 class AppFixtures extends Fixture
 {
     /**
@@ -16,9 +17,11 @@ class AppFixtures extends Fixture
      * @var Generator
      */
     private Generator $faker;
+
     public function __construct()
     {
         $this->faker = Factory::create('fr_FR');
+        
     }
     public function load(ObjectManager $manager): void
     {
@@ -53,7 +56,9 @@ class AppFixtures extends Fixture
             $user->setFullName($this->faker->name())
                 ->setPseudo(mt_rand(0,1) === 1 ? $this->faker->firstName() : null)
                 ->setEmail($this->faker->email())
-                ->setPassword('password');
+                ->setRoles(['ROLE_USER'])
+                ->setPlainPassword('password');
+                
             $manager->persist($user);
         }
         $manager->flush();

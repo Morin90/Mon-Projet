@@ -12,6 +12,7 @@ body {
     background-color: rgb(245, 245, 220);
     padding: 2px 6px; 
     border-radius: 5px;
+    accent-color: rgba(207, 71, 8, 0.897);
             }
             .imageHome{
                 width: 40rem;
