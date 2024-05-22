@@ -32,7 +32,7 @@ class CategoryController extends AbstractController
         $categories = $paginator->paginate(
             $repository->findAll(),
             $request->query->getInt('page', 1), 
-            10 /*limit per page*/
+            5 /*limit per page*/
         );
         return $this->render('pages/category/index.html.twig', [
             'categories' => $categories,
@@ -60,7 +60,7 @@ class CategoryController extends AbstractController
             );
         return $this->redirectToRoute('category.index');
         }
-return $this->render('pages/category/new.html.twig', ['form' => $form->createView()]);
+return $this->render('pages/category/new.html.twig', ['form' => $form]);
     }
     /**
      * This controller allows to delete a category
@@ -93,7 +93,9 @@ public function delete( Categorie $categorie,VeloRepository $veloRepository,Enti
     #[Route('/categorie/edition/{id}', name: 'category.edit', methods: ['GET', 'POST'])]
 public function edit(Request $request, EntityManagerInterface $manager, Categorie $categorie) : Response {
         
-        $form = $this->createForm(CategoryType::class, $categorie);
+        $form = $this->createForm(CategoryType::class, $categorie,[
+            'categorie_id' => $categorie->getId()
+        ]);
         $form ->handleRequest($request);
         if ($form ->isSubmitted() && $form ->isValid()) {
             $categorie = $form->getData();
@@ -112,5 +114,15 @@ public function edit(Request $request, EntityManagerInterface $manager, Categori
             );
             return $this->redirectToRoute('category.index');
         }
-    return $this->render('pages/category/edit.html.twig', ['form' => $form->createView()]);}
+    return $this->render('pages/category/edit.html.twig', ['form' => $form->createView()]);
+}
+#[Route('/category/show', name: 'category.show', methods: ['GET'])]
+public function showCategory(CategorieRepository $repository): Response
+{
+    $categories = $repository->findAll();
+    
+    return $this->render('pages/category/show.html.twig', [
+        'categories' => $categories,
+    ]);
+}
 }

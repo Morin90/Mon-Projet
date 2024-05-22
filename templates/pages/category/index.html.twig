@@ -30,7 +30,8 @@ Créer une catégorie
     <tbody>
     {% for categorie in categories %}
     <tr class="table-primary border border-primary-dark">
-        <th scope="row">{{ categorie.id}}</th>
+        <th scope="row"><img src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="img-fluid" alt=".{{ categorie.name}}"></th>
+        
         <td>{{ categorie.name}}</td>
     <td><a href=" {{ path('category.edit', {'id': categorie.id}) }}" class="btn btn-info">Editer</a></td>
       <td> <a href="{{ path('category.delete', {'id': categorie.id}) }}" onclick="return confirm('êtes vous sûr de vouloir supprimer cette catégorie?')" class ="btn btn-danger">Supprimer</a></td>

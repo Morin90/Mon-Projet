@@ -26,6 +26,7 @@ Créer un Vélo
       <th scope="col">Numéro</th>
       <th scope="col">Nom</th>
       <th scope="col">Prix</th>
+      <th scope="col">Categorie</th>
       <th scope="col">Date de création</th>
       <th scope="col">Edition</th>
       <th scope="col">Suppression</th>
@@ -33,10 +34,12 @@ Créer un Vélo
   </thead>
   <tbody>
     {% for velo in velos %}
+    {# {{ dump(velo.categorie) }} #}
     <tr class="table-primary border border-primary-dark">
-      <th scope="row">{{ velo.id}}</th>
+      <th scope="row"><img src="http://localhost:8000/images/categories/{{ velo.categorie.imageName }}" class="imagevelo" alt=".{{ velo.categorie.imageName}}"></th>
       <td>{{ velo.name}}</td>
       <td>{{ velo.prix }}</td>
+      <td>{{ velo.categorie.name}}</td>
       <td>{{ velo.createdAt|date('d/m/Y') }}</td>
       <td><a href=" {{ path('velo.edit', {'id': velo.id}) }}" class="btn btn-info">Editer</a></td>
       <td> <a href="{{ path('velo.delete', {'id': velo.id}) }}" onclick="return confirm('êtes vous sûr de vouloir supprimer ce Vélo?')" class ="btn btn-danger">Supprimer</a></td>

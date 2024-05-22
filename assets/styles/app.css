@@ -19,4 +19,29 @@ body {
                 height: 25rem;
                 border-radius: 5%;
             }
+            .flex-box{
+                display: flex;
+                background-color: rgb(253, 253, 252);
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .card{
+                background-color: rgb(245, 245, 220);
+                border: 5px solid rgba(207, 71, 8, 0.897);
+                border-radius: 5px;
+                padding: 10px;
+                width: 25%;
+                height: 10%;
+                margin: 40px;
+                text-align: center;
+            }
+            .imagevelo{
+                width: 5rem;
+                height: 5rem;
+                border-radius: 5%;
+            }
 
