@@ -5,43 +5,6 @@
 	<div class="container mt-4">
 
 		<h1 class="mt-4">Modification d'une Catégorie Admin</h1>
-		{# {{ form_start(form) }}
-
-
-		<div class="form-group-1">
-			{{form_label(form.name)}}
-			{{form_widget(form.name)}}
-			<div class="form-error">
-				{{ form_errors(form.name) }}
-			</div>
-
-
-			<div class="row">
-				{{ form_label(form) }}
-				{% for checkbox in form %}
-					<div class="styled-input-single">
-						{{ form_widget(checkbox) }}
-						{{ form_label(checkbox) }}
-
-					{% endfor %}
-				</div>
-
-
-			</div>
-			<div class="form-group-3">
-				{{form_label(form.description)}}
-				{{form_widget(form.description)}}
-				<div class="form-error-2">
-					{{ form_errors(form.description) }}
-				</div>
-			</div>
-			<div class="form-group-4">
-				{{form_row(form.submit) }}
-			</div>
-			<div class="form-group-5">
-				{{ form_row(form.velos) }}</div>
-			{{ form_end(form) }}
-		</div>
-	</div> #}
+		
 	{{form(form)}}
 {% endblock %}

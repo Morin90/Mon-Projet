@@ -125,4 +125,14 @@ public function showCategory(CategorieRepository $repository): Response
         'categories' => $categories,
     ]);
 }
+#[Route('/category/showone/{id}', name: 'category.showone', methods: ['GET'])]
+public function showOneCategory(CategorieRepository $repository, Categorie $categorie, VeloRepository $veloRepository): Response
+{
+    $categorie = $repository->findOneBy(['id' => $categorie->getId()]);
+    $velos = $veloRepository->findBy(['categorie' => $categorie->getId()]);
+    return $this->render('pages/category/show_one.html.twig', [
+        'categorie' => $categorie,
+        'velos' => $velos
+    ]);
+}
 }

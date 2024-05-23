@@ -36,7 +36,7 @@ Créer un Vélo
     {% for velo in velos %}
     {# {{ dump(velo.categorie) }} #}
     <tr class="table-primary border border-primary-dark">
-      <th scope="row"><img src="http://localhost:8000/images/categories/{{ velo.categorie.imageName }}" class="imagevelo" alt=".{{ velo.categorie.imageName}}"></th>
+      <th scope="row"><img src="http://localhost:8000/images/velos/{{ velo.imageName }}" class="imagevelo" alt=".{{ velo.imageName}}"></th>
       <td>{{ velo.name}}</td>
       <td>{{ velo.prix }}</td>
       <td>{{ velo.categorie.name}}</td>

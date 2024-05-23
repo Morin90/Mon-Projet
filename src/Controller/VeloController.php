@@ -30,7 +30,7 @@ class VeloController extends AbstractController
     {
         $velos = $paginator->paginate(
             $repository->findAll(),
-            $request->query->getInt('page', 1), 
+            $request->query->getInt('page', 1),
             10 /*limit per page*/
         );
         return $this->render('pages/velo/index.html.twig', [
@@ -48,54 +48,74 @@ class VeloController extends AbstractController
      * @return Response
      */
     #[Route('/velo/new', name: 'velo.new', methods: ['GET', 'POST'])]
-    public function new(Request $request,EntityManagerInterface $manager): Response {
+    public function new(Request $request, EntityManagerInterface $manager): Response
+    {
         $velo = new Velo();
         $form = $this->createForm(VeloType::class, $velo);
-        $form ->handleRequest($request);
-        if ($form ->isSubmitted() && $form ->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             $velo = $form->getData();
             $manager->persist($velo);
             $manager->flush();
-            
+
             $this->addFlash(
                 'success',
                 'Votre vélo a bien été créé avec succès !'
             );
             return $this->redirectToRoute('velo');
         }
-        
+
         return $this->render('pages/velo/new.html.twig', ['form' => $form->createView()]);
-    
-}
+    }
 
-#[Route('/velo/suppression/{id}', name: 'velo.delete', methods: ['GET'])]
-public function delete( Velo $velo, EntityManagerInterface $manager): Response {
-    
-    $manager->remove($velo);
-    $manager->flush();
-    $this->addFlash(
-        'success',
-        'Votre vélo a bien été supprimé avec succès !'
-    );
-    return $this->redirectToRoute('velo');}
+    #[Route('/velo/suppression/{id}', name: 'velo.delete', methods: ['GET'])]
+    public function delete(Velo $velo, EntityManagerInterface $manager): Response
+    {
 
-#[Route('/velo/edition/{id}', name: 'velo.edit', methods: ['GET', 'POST'])]
-public function edit(Request $request, EntityManagerInterface $manager, Velo $velo) : Response {
+        $manager->remove($velo);
+        $manager->flush();
+        $this->addFlash(
+            'success',
+            'Votre vélo a bien été supprimé avec succès !'
+        );
+        return $this->redirectToRoute('velo');
+    }
+
+    #[Route('/velo/edition/{id}', name: 'velo.edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, EntityManagerInterface $manager, Velo $velo): Response
+    {
         $form = $this->createForm(VeloType::class, $velo);
         $form = $this->createForm(VeloType::class, $velo);
-        $form ->handleRequest($request);
-        if ($form ->isSubmitted() && $form ->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             $velo = $form->getData();
             $manager->persist($velo);
             $manager->flush();
-            
+
             $this->addFlash(
                 'success',
                 'Votre vélo a bien été modifié avec succès !'
             );
             return $this->redirectToRoute('velo');
         }
-    return $this->render('pages/velo/edit.html.twig', ['form' => $form->createView()]);}
+        return $this->render('pages/velo/edit.html.twig', ['form' => $form->createView()]);
+    }
+    #[Route('/velo/show/{id}', name: 'velo.show', methods: ['GET'])]
+    public function showVelo(Velo $velo, VeloRepository $repository): Response
+    {
+            $velo = $repository->find($velo->getId());
+        return $this->render('pages/velo/show.html.twig', [
+            'velo' => $velo
+        ]);
+    }
+    #[Route('/velo/showall', name: 'velo.showall', methods: ['GET'])]
+    public function showAllVelo(VeloRepository $repository): Response
+    {
+            $velos = $repository->findAllOrder();
+
+        return $this->render('pages/velo/showall.html.twig', [
+            'velos' => $velos
+        ]);
+    }
+
 }
-
-

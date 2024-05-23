@@ -16,5 +16,11 @@ class VeloRepository extends ServiceEntityRepository
         parent::__construct($registry, Velo::class);
     }
 
-    
+    public function findAllOrder(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

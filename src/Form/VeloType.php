@@ -6,11 +6,13 @@ use App\Entity\Velo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class VeloType extends AbstractType
 {
@@ -20,39 +22,60 @@ class VeloType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                'minlength' => '3',
-                'maxlength' => '50'],
-                    'label' => 'Nom du vélo',
-                    'label_attr' => [
-                        'class' => 'form-label mt-4'
-                    ],
-                    'constraints' => [
-                        new Assert\Length(['min' => 3, 'max' => 50]),
-                        new Assert\NotBlank()
-                    ],
-                    ])
+                    'minlength' => '3',
+                    'maxlength' => '50'
+                ],
+                'label' => 'Nom du vélo',
+                'label_attr' => [
+                    'class' => 'form-label mt-2'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 50]),
+                    new Assert\NotBlank()
+                ],
+            ])
+            ->add('description', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control mt-2',
+                    'minlength' => '3',
+                    'maxlength' => '2550'
+                ],
+                'label' => 'Description de votre vélo',
+                'label_attr' => [
+                    'class' => 'form-label mt-2'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 2550]),
+                    new Assert\NotBlank()
+                ]
+            ])
+
             ->add('prix', MoneyType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                    'label' => 'Prix    ',
-                    'label_attr' => [
-                        'class' => 'form-label mt-4'
-                    ],
-                    'constraints' => [
-                        new Assert\Positive(),
-                        new Assert\LessThan(2499.99)
-                    ]
-                    ])
+                'label' => 'Prix    ',
+                'label_attr' => [
+                    'class' => 'form-label mt-2'
+                ],
+                'constraints' => [
+                    new Assert\Positive(),
+                    new Assert\LessThan(2499.99)
+                ]
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+                'label' => 'Image',
+            ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary mt-4'
                 ],
                 'label' => 'Créer mon Vélo'
-            ])
-            
-            
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

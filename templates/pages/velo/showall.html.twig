@@ -9,14 +9,14 @@
 <table class="table table-hover">
     <tbody>
     <div class="flex-box">
-    {% for categorie in categories %}
+    {% for velo in velos %}
     
         <div class="card ">
-            <img src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="card-img-top" alt=".{{ categorie.name}}">
+            <img src="http://localhost:8000/images/velos/{{ velo.imageName }}" class="card-img-top" alt=".{{ velo.name}}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ categorie.name}}</h5>
-                        <p class="card-text">{{ categorie.description}}</p>
-                            <a href="{{ path('category.showone', {'id': categorie.id}) }}" class="btn btn-primary">Voir la catégorie " {{ categorie.name}} "</a>
+                    <h5 class="card-title">{{ velo.name}}</h5>
+                        <p class="card-text">{{ velo.description}}</p>
+                            <a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn btn-primary"> Voir le vélo " {{ velo.name}} "</a>
 
                             {# mettre ... quand la description est trop longue #}
                             

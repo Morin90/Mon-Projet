@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon projet - Catégories public
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1>Voir un seul vélo</h1>
+
+		<table class="table table-hover">
+			<tbody>
+				<div class="flex-box1">
+				 
+					<div class="card1 ">
+					<image src="http://localhost:8000/images/velos/{{velo.imageName }}" class="imagevelo1" alt=".{{ velo.name}}">
+						<div class="card-body1">
+							<h5 class="card-title">{{ velo.name}}</h5>
+                               
+							<p class="card-text">{{ velo.description}}</p>
+
+								<h6 class="card-description">Prix : {{ velo.prix}} €</h6>
+
+						</div>
+					</div>
+				</div>
+			</tbody>
+		</div>
+
+<div>
+
+</div>
+
+
+
+
+
+
+
+	{% endblock %}
