@@ -19,8 +19,20 @@ class VeloRepository extends ServiceEntityRepository
     public function findAllOrder(): array
     {
         return $this->createQueryBuilder('u')
+            ->addSelect('notes')
+            ->leftJoin('u.notes', 'notes')
+            ->addOrderBy('notes.rating', 'DESC')
             ->orderBy('u.name', 'ASC')
             ->getQuery()
             ->getResult();
     }
+    public function searchVelo($keyword){
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.name LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+            
+    }
+    
 }

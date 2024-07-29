@@ -1,38 +1,56 @@
 {% extends 'base.html.twig' %}
-{% block title %}Mon projet - Catégories public
+{% block title %}Mon projet - Vélo public
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-4">
-		<h1>Voir un seul vélo</h1>
 
-		<table class="table table-hover">
-			<tbody>
-				<div class="flex-box1">
-				 
-					<div class="card1 ">
-					<image src="http://localhost:8000/images/velos/{{velo.imageName }}" class="imagevelo1" alt=".{{ velo.name}}">
-						<div class="card-body1">
-							<h5 class="card-title">{{ velo.name}}</h5>
-                               
-							<p class="card-text">{{ velo.description}}</p>
+	<h1 class="mt-4 text-center">{{ velo.name}}</h1>
 
-								<h6 class="card-description">Prix : {{ velo.prix}} €</h6>
+	<div class="flex-box">
 
-						</div>
-					</div>
-				</div>
-			</tbody>
+		<div class="cardV" style="width: 50rem;">
+			<image src="http://localhost:8000/images/velos/{{velo.imageName }}" class="card-img-top" alt=".{{ velo.name}}">
+		</image>
+	</div>
+	<div class="card-body d-flex justify-content-start flex-column align-items-center " style="width: 25rem;">
+		<div class="flex-price " style="color: var(--text-red)">
+			<h3 class="card-price mt-1 mx-5">Prix :
+				{{ velo.prix}}
+				€</h3>
 		</div>
+		<p class="card-text">{{ velo.description}}</p>
+		{% if details %}
+			<div class="col-md-4">
+				<label for="inputState" class="form-label">Taille</label>
+				<select id="inputState" class="form-select">
+					<option selected>{{ taille}}</option>
+				</select>
+			</div>
+<div class="col-md-4">
+				<label for="inputState" class="form-label">Roues</label>
+				<select id="inputState" class="form-select">
+					<option selected>{{ roues}}</option>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label for="inputState" class="form-label">Vitesses</label>
+				<select id="inputState" class="form-select">
+					<option selected>{{details.vitesse}}</option>
+				</select>
+			</div>
+		{% endif %}
+		<div class="mt-1 mx-5">
+			{% for i in 1..5 %}
+				{% if i <= notes %}
+					<i class="fas fa-star " style="color: gold"></i>
+					{# étoile or (remplie) #}
+				{% else %}
+					<i class="far fa-star"></i>
+					{# étoile blanche (vide) #}
+				{% endif %}
+			{% endfor %}
 
-<div>
 
-</div>
-
-
-
-
-
-
-
-	{% endblock %}
+		</div>
+	</div>
+</div></tbody></div>{% endblock %}

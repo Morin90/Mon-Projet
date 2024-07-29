@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\VeloRepository;
@@ -55,10 +57,23 @@ class Velo
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    /**
+     * @var Collection<int, Notes>
+     */
+    #[ORM\OneToMany(targetEntity: Notes::class, mappedBy: 'velo', orphanRemoval: true)]
+    private Collection $notes;
+
+    #[ORM\OneToOne(mappedBy: 'velo', cascade: ['persist', 'remove'])]
+    private ?Details $details = null;
+
+    #[ORM\Column(length: 25)]
+    private ?string $marque = null;
+
     //  Constructor
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,5 +189,64 @@ class Velo
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection<int, Notes>
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Notes $note): static
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes->add($note);
+            $note->setVelo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Notes $note): static
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getVelo() === $this) {
+                $note->setVelo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDetails(): ?Details
+    {
+        return $this->details;
+    }
+
+    public function setDetails(Details $details): static
+    {
+        // set the owning side of the relation if necessary
+        if ($details->getVelo() !== $this) {
+            $details->setVelo($this);
+        }
+
+        $this->details = $details;
+
+        return $this;
+    }
+
+    public function getMarque(): ?string
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(string $marque): static
+    {
+        $this->marque = $marque;
+
+        return $this;
     }
 }

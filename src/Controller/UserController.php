@@ -27,7 +27,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('security.login');
         }
         if ($this->getUser() !== $user) {
-            return $this->redirectToRoute('category.index');
+            return $this->redirectToRoute('category.show');
         }
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -40,7 +40,7 @@ class UserController extends AbstractController
                 $this->addFlash(
                     'success', 'Vos informations ont bien été mis à jour'
                 );
-                return $this->redirectToRoute('category.index');
+                return $this->redirectToRoute('category.show');
             }
             else {
                 $this->addFlash(
@@ -75,7 +75,7 @@ class UserController extends AbstractController
                     'success', 
                     'Votre mot de passe a bien été mis à jour'
                 );
-                return $this->redirectToRoute('category.index');
+                return $this->redirectToRoute('category.show');
             }
             else {
                 $this->addFlash(
@@ -91,7 +91,7 @@ class UserController extends AbstractController
                 'Les mots de passe ne sont pas identiques'
             );
             return $this->redirectToRoute('user.edit.password', ['id' => $user->getId()]);
-        }
+        } 
         return $this->render('pages/user/edit_password.html.twig', [
             'form' => $form->createView()
         ])

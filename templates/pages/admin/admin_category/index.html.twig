@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon projet - Catégories
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		{% if not categories.items is same as ([]) %}
+			<div class="d-flex justify-content-center">
+				<h1>Nos Categories Admin</h1>
+				<a href=" {{ path('admin_category.new') }}" class="btn btn-primary ms-5" style="width: 12rem;">
+					Créer une catégorie
+				</a>
+			</div>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			<div class="count">
+				<h4>Il y a
+					{{categories.totalItemCount}}
+					Catégories au total.
+				</h4>
+			</div>
+
+			<table class="table table-hover mt-4 border border-primary-dark align-middle">
+				<thead>
+					<tr>
+						<th scope="col">Numéro</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Edition</th>
+						<th scope="col">Suppression</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for categorie in categories %}
+						<tr class="table-primary border border-primary-dark">
+							<th scope="row"><img src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="...{{ categorie.name}}"></th>
+
+							<td>{{ categorie.name}}</td>
+							<td>
+								<a href=" {{ path('admin_category.edit', {'id': categorie.id}) }}" class="btn btn-info">Editer</a>
+							</td>
+							<td>
+								<a href="{{ path('admin_category.delete', {'id': categorie.id}) }}" onclick="return confirm('êtes vous sûr de vouloir supprimer cette catégorie?')" class="btn btn-danger">Supprimer</a>
+							
+              </td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div class="navigation d-flex justify-content-center mt-4">
+				{{ knp_pagination_render(categories) }}
+			</div>
+		{% else %}
+			<h4>Il n'y a pas de catégories.
+			</h4>
+		{% endif %}
+	</div>
+{% endblock %}

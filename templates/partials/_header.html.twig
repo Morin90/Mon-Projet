@@ -1,43 +1,73 @@
  <nav class="navbar navbar-expand-lg bg-primary " data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand text-light" href="#">🚴‍♀️</a>
+    <a href="{{path('home.index')}}"><img class="imageHeader" src="{{asset('img/logo-white.png')}}" alt="..." ></img></a>
     <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse "  id="navbarColor01">
-      <ul class="navbar-nav me-auto ">
+      <ul class="navbar-nav me-5 ">
         <li class="nav-item">
           <a class="nav-link active text-light" href="{{path('home.index')}}">
           Accueil
             <span class="visually-hidden">(current)</span>
           </a>
           </li>
+          {% if is_granted('ROLE_ADMIN') %}
+          
           <li class="nav-item">
           <a class="nav-link  text-light" href="{{ path('velo') }}">
           Vélos admin
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  text-light" href="{{ path('category.index') }}">
+          <a class="nav-link  text-light" href="{{ path('admin_category.index') }}">
           Catégories admin
           </a>
         </li>
+        {% endif %}
+        {% if app.user  %}
+        
         <li class="nav-item">
-          <a class="nav-link  text-light " href="{{ path('security.login') }}">
+          <a class="nav-link  text-light " href="{{ path('user.edit', {'id': app.user.id}) }}">
           Profil
           </a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link  text-light" href="{{ path('category.show') }}">
-          Catégories public
+          Catégories
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link  text-light" href="{{ path('velo.showall') }}">
-          Vélos public
+          Vélos
           </a>
         </li>
       </ul>
+          <h2 class="nav-item text-light ms-5" >
+          Bienvenue {{ app.user.fullName | default('') }}
+          </h2>
+      
     </div>
+    <form class="searchbar1" action="{{ path('velo.showall') }}">
+    <input type="search" name="q" placeholder="Search.." class="btn btn-dark w-20">
+    <button type="submit" class="btn btn-dark w-20">Submit </button>
+    </form>
+    
+    {% if app.user  %}
+        
+        <li class="nav-item1">
+        <a class="btn btn-primary" href="{{ path('user.edit.password', {'id': app.user.id}) }}" role="button">Modifier mon mot de passe</a>
+          <a class="nav-link  text-light " href="{{ path('security.logout') }}">
+          Déconnexion
+          </a>
+        </li>
+        {% else %}
+          <li class="nav-item">
+          <a class="nav-link  text-light " href="{{ path('security.login') }}">
+          Connexion
+          </a>
+        </li>
+        {% endif %}
   </div>
 </nav>

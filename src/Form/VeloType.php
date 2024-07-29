@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Velo;
-
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -34,6 +34,21 @@ class VeloType extends AbstractType
                     new Assert\NotBlank()
                 ],
             ])
+            ->add('marque', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlength' => '3',
+                    'maxlength' => '25'
+                ],
+                'label' => 'Marque du vélo',
+                'label_attr' => [
+                    'class' => 'form-label mt-2'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 25]),
+                    new Assert\NotBlank()
+                ]
+                ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control mt-2',
@@ -49,7 +64,39 @@ class VeloType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-
+            ->add('taille',TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'   
+                ],
+                'label' => 'Taille du vélo',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Positive()
+                ],
+                'mapped' => false
+                ])
+                ->add('vitesses', IntegerType::class, [
+                    'attr' => [
+                        'class' => 'form-control'   
+                    ],
+                    'label' => 'Nombre de vitesses',
+                    'constraints' => [
+                        new Assert\NotBlank(),
+                        new Assert\Positive()
+                    ],
+                    'mapped' => false
+                    ])
+            ->add ('roues', IntegerType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Taille de roues',
+                'constraints' => [ 
+                    new Assert\NotBlank(),  
+                    new Assert\Positive()
+                ],
+                'mapped' => false
+                ])
             ->add('prix', MoneyType::class, [
                 'attr' => [
                     'class' => 'form-control'

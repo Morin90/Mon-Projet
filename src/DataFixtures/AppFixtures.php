@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Velo;
 use Faker\Generator;
 use App\Entity\Categorie;
+use App\Entity\Details;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -29,14 +30,20 @@ class AppFixtures extends Fixture
         for ($i=1; $i <= 50; $i++) { 
             $velo = new Velo();
             $categorie =new Categorie();
+            $details = new Details();
             $velo->setName($this->faker->word())
+                    ->setMarque($this->faker->word())
                     ->setPrix(mt_rand(999, 2499))
                     ->setCategorie($categorie);
                     $categorie->setName($this->faker->word());
                     $categorie->setDescription($this->faker->text(200));
+                    $details->setTaille($this->faker->word());
+                    $details->setRoues(mt_rand(0, 9));
+                    $details->setVitesse(mt_rand(0, 9));
                     $velos[] = $velo;
                 $manager->persist($velo);
                 $manager->persist($categorie);
+                $manager->persist($details);
         }
         
         //Categories
