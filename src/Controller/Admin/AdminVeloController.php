@@ -92,19 +92,22 @@ class AdminVeloController extends AbstractController
     #[Route('/admin_velo/edition/{id}', name: 'velo.edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $manager, Velo $velo): Response
     {
-
         $form = $this->createForm(VeloType::class, $velo);
+        $form->get('taille')->setData($velo->getDetails()->getTaille());
+        $form->get('roues')->setData($velo->getDetails()->getRoues());
+        $form->get('vitesses')->setData($velo->getDetails()->getVitesse());
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $manager->persist($velo);
             $manager->flush();
-            $details = new Details();
+            $details = $velo->getDetails();
             $details->setVelo($velo);
+            $details->setId($request->get('id'));
             $details->setTaille($form->get('taille')->getData());
             $details->setRoues($form->get('roues')->getData());
             $details->setVitesse($form->get('vitesses')->getData());
             $manager->persist($details);
+            $manager->persist($velo);
             $manager->flush();
             $this->addFlash(
                 'success',

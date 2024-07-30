@@ -75,19 +75,20 @@ class CategoryType extends AbstractType
                     'class' => 'example-wrapper'
                 ]
             ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-outline-info mt-4 mb-4 mx-auto d-block'
+                ],
+                'label' => 'Créer votre catégorie'
+            ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
                 'label' => 'Image',
-            ])
-            ->add('submit', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-primary mt-4'
-                ],
-                'label' => 'Créer votre catégorie'
             ]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

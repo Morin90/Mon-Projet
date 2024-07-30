@@ -48,6 +48,7 @@ class Velo
     #[Vich\UploadableField(mapping: 'velos_image', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
+    #[ORM\JoinColumn(nullable: true)]
     #[ORM\Column(length: 255)]
     private ?string $imageName = null;
 

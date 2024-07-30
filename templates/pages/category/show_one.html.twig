@@ -5,23 +5,17 @@
 
 {% block body %}
 	<div class="container mt-4 ">
-		<h1>Catégorie public pour voir les vélos d'une catégorie</h1>
 
-				<div >
-						<div class="card-body d-flex flex-column align-items-center">
-							<h5 class="card-title">{{ categorie.name}}</h5>
-                            <!--    <image src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="card-img-top " style="width: 25rem; height: 30rem;" alt=".{{ categorie.name}}">-->
+			<div class="card-body d-flex flex-column align-items-center">
+				<h3 class="card-title"style="color: var(--b-violet)">{{ categorie.name}}</h3>
 							{% for velo in velos %}
-
-								<a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn btn-primary mt-2 w-50">
-									{{ velo.name}}
-								</a>
-
-								{# mettre ... quand la description est trop longue #}
-
-
-							{% endfor %}
-					</div>
-				</div>
+					<div class="card1" style="width: 42rem; height: 32rem;">
+					<h5 class="card-title " style="color: var(--b-violet)">{{ velo.name}}</h5>
+						<a href="{{ path('velo.show', {'id': velo.id}) }}">
+							<img src="http://localhost:8000/images/velos/{{ velo.imageName }}" class="card-img-top" style="width: 40rem; height: 28rem;" alt="...">
+						</div>
+					</a>
+				{% endfor %}
+			</div>
 		</div>
-	{% endblock %}
+{% endblock %}

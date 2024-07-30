@@ -3,7 +3,7 @@
 {% block body %}
 	<div class="container mt-4">
 
-		<h1 class="mt-4">Modification d'un Vélo Admin</h1>
+		<h1 class="mt-4">Modification d'un Vélo / Admin</h1>
 		{{ form_start(form) }}
 
 
@@ -54,14 +54,15 @@
 				{{ form_errors(form.prix) }}
 			</div>
 		</div>
+		</div>
+		{{form_row(form.submit) }}
+	</div>
 		<div class="from-group9">
             {{form_label(form.imageFile)}}
             {{form_widget(form.imageFile)}}
 			<div class="form-error">
                 {{ form_errors(form.imageFile) }}
             </div>
-		</div>
-		{{form_row(form.submit) }}
-	</div>
+		
 	{{ form_end(form) }}
 </div>{% endblock %}

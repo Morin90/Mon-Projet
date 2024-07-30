@@ -119,7 +119,7 @@ class VeloType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-primary mt-4'
+                    'class' => 'btn btn-outline-info mt-4 mx-auto d-block'
                 ],
                 'label' => 'Créer mon Vélo'
             ]);

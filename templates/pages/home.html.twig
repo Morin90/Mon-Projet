@@ -1,19 +1,76 @@
- {% extends "base.html.twig" %}
- {% block title %} Mon Projet - Accueil {% endblock %}
- {% block body %} 
- <div class="container mt-4">
-<div class="jumbotron">
-  <h1 class="display-4 text-center">Bienvenue sur le magasin de Kraken</h1>
-  <img class="imageHome" src="{{asset('img/imageAccueil.png')}}" alt="..."></img>
-  <p class="lead text-center">Mon projet est une application Symfony.</p>
-  <p>C'est un projet de mise en oeuvre du CRUD avec une interface graphique.</p>
-  <p>Il utilise Bootstrap et Bootswatch pour facilité l'utilisation de ma part et de mise en place pratique de design.</p>
-  <p>J'utilise le formulaire Bootstrap déjà incorporé dans Symfony pour mon formulaire de création d'un nouveau vélo ou d'une nouvelle catégorie.</p>
-  <p>Relation one-to-many entre ma table catégorie et vélo.</p>
+{% extends "base.html.twig" %}
+{% block title %}
+	Mon Projet - Accueil
+{% endblock %}
+{% block body %}
+	<!--<div class="container mt-4">
+		<div class="jumbotron">
+			<h1 class="display-4 text-center" style="color: var(--b-violet)">
+				<strong>Bienvenue sur Kraken
+				</strong>
+			</h1>
+			<img class="imageHome" src="{{asset('img/imageMagasin.jpg')}}" alt="..."></img>
+		<h2 class="titreHome mt-4 mx-5 ">
+			<b>Informations Pratiques:
+			</b>
+		</h2>
 
-  <hr class="my-4">
-  <p>Pour commencer rendez-vous sur la page d'inscription pour utiliser l'application.</p>
-  <a class="btn btn-primary btn-lg mb-2" href="{{ path('security.registration') }}" role="button">Inscription</a>
-</div>
-</div>
- {% endblock %}
+		<section class="d-flex mx-5">
+			<div class="card2 mx-4">
+				<h4 class="titreHome mt-4">
+					<b>Adresse:
+					</b>
+				</h4>
+				<p>
+					8 Avenue de la Gare, 75015 Paris</p>
+				<div class="card2 ">
+					<h4 class="titreHome mt-4">
+						<b>Contact:
+						</b>
+					</h4>
+					<p>
+						<b>Tél:
+						</b>
+						01 02 03 04 05</p>
+					<p>
+						<b>Mail:
+						</b>
+						Kraken@velo.com</p>
+				</div>
+			</div>
+			<div class="card2 mx-5 justify-content-center">
+				<h3 class="titreHome mt-4">
+					<b>Horaires:
+					</b>
+				</h3>
+				<p>
+					<b>Lundi - Samedi
+					</b>
+					10h - 19h00</p>
+				<p>
+					<b>Dimanche
+					</b>
+					Fermé</p>
+			</div>
+			<div class="mx-5">
+				<h3 class="titreHome mt-4">
+					<b>Description du magasin:
+					</b>
+				</h3>
+				<p>Le magasin est ouvert depuis les années 90. Depuis deux générations, il est entretenu dans la culture et l'amour du vélo.
+					  Nous accueillons aussi bien les amateurs que les professionnels, sur une superficie totale de 700 m².
+					  Nos vendeurs sont tous des professionnels du vélo. Ils pourront ainsi vous aiguiller au mieux lors de votre premier achat.
+					  Nous vous accueilleront toujours dans une ambiance familliale et conviviale.
+					  Au plaisir de vous voir en magasin.
+				</p>
+			</div>
+
+		</section>
+
+
+	</div>
+</div>-->
+<h2>Mon projet - Résumé</h2>
+<p>C'est un projet d'application web qui met en avant les vélos d'un magasin afin de pouvoir en vendre.</p>
+<p>Les technologies utilisées sont: PHP, Twig, Bootstrap, Symfony, MySQL, JavaScript, HTML, CSS.</p>
+{% endblock %}

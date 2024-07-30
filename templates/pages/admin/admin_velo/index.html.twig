@@ -13,7 +13,7 @@
 			</div>
 		{% endfor %}
 		{% if not velos.items is same as ([]) %}
-			<h1>Nos Vélos Admin</h1>
+			<h1>Nos Vélos / Admin</h1>
 			<a href=" {{ path('velo.new') }}" class="btn btn-primary">
 				Créer un Vélo
 			</a>
@@ -29,6 +29,7 @@
 					<tr>
 						<th scope="col">Numéro</th>
 						<th scope="col">Nom</th>
+						<th scope="col">Marque</th>
 						<th scope="col">Prix</th>
 						<th scope="col">Categorie</th>
 						<th scope="col">Date de création</th>
@@ -42,7 +43,8 @@
 						<tr class="table-primary border border-primary-dark">
 							<th scope="row"><img src="http://localhost:8000/images/velos/{{ velo.imageName }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="...{{ velo.imageName}}"></th>
 							<td>{{ velo.name}}</td>
-							<td>{{ velo.prix }}</td>
+							<td>{{ velo.marque }}</td>
+							<td>{{ velo.prix }}€</td>
 							<td>{{ velo.categorie.name}}</td>
 							<td>{{ velo.createdAt|date('d/m/Y') }}</td>
 							<td>

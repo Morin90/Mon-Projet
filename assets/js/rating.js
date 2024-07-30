@@ -1,7 +1,6 @@
 
 const stars = document.querySelectorAll('.fa-star');
 stars.forEach(star => {
-    if (star.dataset.noted === '') {
         star.addEventListener('mouseover', (event) => {
             const value = star.getAttribute('data-value');
             star.style.color = star.getAttribute('data-value') <= value ? 'gold' : '#ccc';
@@ -20,7 +19,7 @@ stars.forEach(star => {
                 })
             });
         });
-    }
+    
 
     star.addEventListener('mouseout', () => {
         if (!star.dataset.note) {

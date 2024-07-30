@@ -54,13 +54,24 @@ body {
     background-color: var(--bg-blue);
     border: 5px solid var(--b-violet);
     border-radius: 35px 35px 35px 35px;
+    box-shadow: 10px 5px 5px 5px var(--box-shadow);
     padding: 10px;
     width: 25%;
     height: 10%;
     margin: 40px;
     text-align: center;
 }
-
+.card1 {
+    
+    border: 10px solid var(--bg-blue);
+    border-radius: 35px 35px 35px 35px;
+    box-shadow: 10px 5px 5px 5px var(--box-shadow);
+    padding: 10px;
+    width: 25%;
+    height: 10%;
+    margin: 40px;
+    text-align: center;
+}
 .card-img-top {
     border-radius: 5% 5% 1% 1%;
 }
@@ -81,7 +92,16 @@ body {
 .star.selected {
     color: gold;
 }
-
+.card3 {
+    padding: 10px;
+    width: 25%;
+    height: 10%;
+    margin: 40px;
+    text-align: center;
+}
+.titreHome {
+    text-decoration: underline;
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -89,7 +109,6 @@ body {
     height: 60px;
     background-color: dark;
 }
-
 body {
     min-height: 100vh;
     display: flex;
