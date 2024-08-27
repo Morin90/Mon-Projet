@@ -121,7 +121,7 @@ class VeloType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-outline-info mt-4 mx-auto d-block'
                 ],
-                'label' => 'Créer mon Vélo'
+                'label' => 'Mettre à jour'
             ]);
     }
 

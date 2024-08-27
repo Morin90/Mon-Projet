@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg " data-bs-theme="dark" style="background-color: var(--bg-blue);">
 	<div class="container-fluid">
-		<a href="{{path('home.index')}}"><img class="imageHeader" src="{{asset('img/logo-white.png')}}" alt="..."></img>
+		<a href="{{path('home.index')}}"><img class="imageHeader" src="{{asset('img/Group4.png')}}" alt="..."></img>
 	</a>
 	<button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -45,10 +45,6 @@
 				</a>
 			</li>
 		</ul>
-		<h2 class="nav-item text-dark ms-5">
-			Bienvenue
-			{{ app.user.fullName | default('') }}
-		</h2>
 
 	</div>
 	<form class="searchbar me-5 " action="{{ path('velo.showall') }}">

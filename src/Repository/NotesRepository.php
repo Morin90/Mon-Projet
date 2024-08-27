@@ -32,13 +32,19 @@ class NotesRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findAverageRating( $id): ?Array
+    public function findAverageRating($id): ?array
     {
+        // Création d'un QueryBuilder pour construire dynamiquement une requête DQL
         return $this->createQueryBuilder('n')
-            ->select ('AVG(n.rating)')
+            // Sélectionne la moyenne des valeurs de la colonne 'rating' de l'entité notes
+            ->select('AVG(n.rating)')
+            // Ajout d'une condition pour filtrer les résultats par l'ID du vélo
             ->andWhere('n.velo = :id')
+            // Définit la valeur du paramètre ':id' avec la valeur réelle passée en argument de la fonction
             ->setParameter('id', $id)
+            // Crée la requête finale basée sur la construction du QueryBuilder
             ->getQuery()
+            // Exécute la requête et récupère un seul résultat ou null s'il n'y a aucun résultat
             ->getOneOrNullResult();
     }
 }

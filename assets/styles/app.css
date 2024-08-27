@@ -12,6 +12,7 @@ body {
 
 }
 
+
 @import "bootstrap/scss/bootstrap.scss";
 
 .navbar {
@@ -61,8 +62,9 @@ body {
     margin: 40px;
     text-align: center;
 }
+
 .card1 {
-    
+
     border: 10px solid var(--bg-blue);
     border-radius: 35px 35px 35px 35px;
     box-shadow: 10px 5px 5px 5px var(--box-shadow);
@@ -72,6 +74,7 @@ body {
     margin: 40px;
     text-align: center;
 }
+
 .card-img-top {
     border-radius: 5% 5% 1% 1%;
 }
@@ -92,6 +95,7 @@ body {
 .star.selected {
     color: gold;
 }
+
 .card3 {
     padding: 10px;
     width: 25%;
@@ -99,9 +103,12 @@ body {
     margin: 40px;
     text-align: center;
 }
+
 .titreHome {
     text-decoration: underline;
 }
+
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -109,6 +116,7 @@ body {
     height: 60px;
     background-color: dark;
 }
+
 body {
     min-height: 100vh;
     display: flex;
@@ -117,4 +125,94 @@ body {
 
 footer {
     margin-top: auto;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .jumbotron {
+        padding: 10px 0;
+    }
+
+    .imageHome {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* Redimensionnement des titres */
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    .titreHome {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Organisation des cartes en colonne */
+    section {
+        display: block;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .card2 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Réduction des marges */
+    .mx-5 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    .card2 p {
+        text-align: left;
+    }
+
+    /* Aligner les éléments au centre pour les petits écrans */
+    .text-center {
+        text-align: center;
+    }
+    /* Footer styles */
+.footer-container {
+    width: 100%;
+}
+
+.footer-content {
+    width: 70rem;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column; /* Colonne pour les petits écrans */
+        align-items: center;
+        width: 100%; /* S'assurer qu'il prend toute la largeur */
+    }
+
+    .card-body {
+        text-align: center; /* Centrer le texte */
+    }
+
+    .social-links {
+        justify-content: space-around;
+        flex-wrap: wrap; /* Les liens sociaux s'enroulent si nécessaire */
+        
+    }
+}
+
 }

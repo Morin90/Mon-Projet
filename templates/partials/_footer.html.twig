@@ -1,20 +1,21 @@
-<footer
-	class=" bg-dark text-center">
-	<!-- Grid container -->
-	<div class=" py-4 pb-0 bg-dark" style="width: 100%;">
-		<div class="card2 d-flex justify-content-left text-white" style="width: 70rem;">
-			<div class="card-body">
-				<h4 class="card-title">Besoin d'aide</h4>
-				<br>
-				{% if app.user %}
-				<a class="card-text text-white "href="{{ path('user.edit', {'id': app.user.id}) }}"><p>Mes informations</p></a>
-				{% endif %}
-				<a class="card-text text-white" href="#!"><p>Adresse</p></a>
-				<a class="card-text text-white"href="#!"><p>Service Client</p></a>
-				<a class="card-text text-white"href="#!"><p>FAQ</p></a>
-			</div>
-			<!-- Section: Social media -->
-			<section class="mb-4">
+<footer class="bg-dark text-center">
+    <!-- Grid container -->
+    <div class="footer-container py-4 pb-0 bg-dark">
+        <div class="card2 d-flex justify-content-left text-white footer-content">
+            <div class="card-body">
+                <h4 class="card-title">Besoin d'aide</h4>
+                <br>
+                {% if app.user %}
+                    <a class="card-text text-white" href="{{ path('user.edit', {'id': app.user.id}) }}">
+                        <p>Mes informations</p>
+                    </a>
+                {% endif %}
+                <a class="card-text text-white" href="#!"><p>Adresse</p></a>
+                <a class="card-text text-white" href="#!"><p>Service Client</p></a>
+                <a class="card-text text-white" href="#!"><p>FAQ</p></a>
+            </div>
+            <!-- Section: Social media -->
+            <section class="mb-4">
 			<br>
 				<h4 class="text-center text-white">Contactez-moi sur les réseaux sociaux !</h4>
 				<!-- Facebook -->
@@ -44,12 +45,10 @@
 				</a>
 				<!-- Copyright -->
 			</section>
-			<!-- Section: Social media -->
-		</div>
-		<!-- Grid container -->
-	</div>
-	<div class="text-center  p-3" style="background-color: black; color: var(--bg-white);">
-		© 2024 Copyright:
-		<a class="text-white" style="background-color: black;" href="https://github.com/Morin90" alt="Github Morin Julien">MorinJulien</a>
-	</div>
+        </div>
+    </div>
+    <div class="text-center p-3" style="background-color: black; color: var(--bg-white);">
+        © 2024 Copyright:
+        <a class="text-white" href="https://github.com/Morin90">MorinJulien</a>
+    </div>
 </footer>
