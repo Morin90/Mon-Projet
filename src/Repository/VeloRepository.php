@@ -17,22 +17,32 @@ class VeloRepository extends ServiceEntityRepository
     }
 
     public function findAllOrder(): array
-    {
-        return $this->createQueryBuilder('u')
-            ->addSelect('notes')
-            ->leftJoin('u.notes', 'notes')
-            ->addOrderBy('notes.rating', 'DESC')
-            ->orderBy('u.name', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
-    public function searchVelo($keyword){
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.name LIKE :keyword')
-            ->setParameter('keyword', '%'.$keyword.'%')
-            ->getQuery()
-            ->getResult();
-            
-    }
+{
+    // Création d'un QueryBuilder pour l'entité 'u' (qui représente l'entité associée à ce repository)
+    return $this->createQueryBuilder('u')
+        // Ajoute une sélection supplémentaire pour inclure les entités 'notes' associées à 'u'
+        ->addSelect('notes')
+        // Effectue une jointure à gauche (LEFT JOIN) entre 'u' et ses 'notes'
+        ->leftJoin('u.notes', 'notes')
+        // Ajoute un ordre de tri sur les 'notes' en fonction de leur 'rating' en ordre décroissant
+        ->addOrderBy('notes.rating', 'DESC')
+        // Trie également les résultats par le nom en ordre croissant
+        ->orderBy('u.name', 'ASC')
+        // Exécute la requête et renvoie les résultats sous forme de tableau
+        ->getQuery()
+        ->getResult();
+}
+public function searchVelo($keyword)
+{
+    // Création d'un QueryBuilder pour l'entité 'u'
+    return $this->createQueryBuilder('u')
+        // Ajoute une condition pour filtrer les entités dont le nom ('name') contient le mot-clé recherché
+        ->andWhere('u.name LIKE :keyword')
+        // Définit le paramètre ':keyword' en entourant le mot-clé par des pourcentages pour permettre une recherche partielle (LIKE)
+        ->setParameter('keyword', '%'.$keyword.'%')
+        // Exécute la requête et renvoie les résultats sous forme de tableau
+        ->getQuery()
+        ->getResult();
+}
     
 }
