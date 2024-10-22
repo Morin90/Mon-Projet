@@ -18,7 +18,7 @@ stars.forEach(star => {
             // recuperation de l'id de l'element parent (velo)
             const veloId = event.target.parentNode.dataset.veloId
             // envoi de la requête asynchrone pour soumettre la note en variable dans l'URL
-            await fetch(`http://localhost:8000/note?note=${note}&veloId=${veloId}&userId=${event.target.parentNode.dataset.userId}`, {
+            await fetch(`https://magasin-velo-kraken-7fcdb570f12c.herokuapp.com/note?note=${note}&veloId=${veloId}&userId=${event.target.parentNode.dataset.userId}`, {
                 method: 'GET',
                 headers: headers
                 // traitement de la réponse, convertion en JSON
@@ -40,3 +40,4 @@ stars.forEach(star => {
     });
 
 });
+/*ligne 21 /  await fetch(`http://localhost:8000/note?note=${note}&veloId=${veloId}&userId=${event.target.parentNode.dataset.userId} en mode developpement*/
