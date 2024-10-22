@@ -20,7 +20,11 @@ body {
     top: 0;
     z-index: 100;
 }
-
+.btn1 {
+    border-radius: 5px;
+    text-align: center;
+    width: 35%;
+}
 .example-wrapper {
     margin: 4em auto;
     max-width: 800px;
@@ -275,5 +279,11 @@ footer {
         flex-wrap: wrap;
         /* Les liens sociaux s'enroulent si nécessaire */
 
+    }
+    .searchbar {
+        margin-top: 5px;
+    }
+    .btn1 {
+        margin-top: 5px;
     }
 }
