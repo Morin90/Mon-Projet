@@ -29,7 +29,7 @@
                     <a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn">
                         <h3>{{ velo.marque}}</h3>
                         {# Image du vélo, récupérée depuis le dossier `images/velos` grâce à VichUploader #}
-                        <img src="http://localhost:8000/images/velos/{{ velo.imageName }}" class="card-img-top" style="width: 18rem; height: 18rem" alt="{{ velo.name}}">
+                        <img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top" style="width: 18rem; height: 18rem" alt="{{ velo.name}}">
                         <div class="card-body">
                             <h5 class="card-title">{{ velo.name}}</h5>
                             {# Description du vélo, limitée à 100 caractères maximum avec des points de suspension si trop longue #}
