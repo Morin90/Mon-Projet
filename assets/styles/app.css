@@ -183,9 +183,9 @@ footer {
     }
     .card-img-top {
 
-        width: 270px;
+        width: 250px;
         height: 225px;
-        margin: -5px;
+        margin: 0 auto;
     }
     .card-img-top1 {
         width: 20em;
