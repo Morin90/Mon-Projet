@@ -11,7 +11,7 @@
     {% for categorie in categories %}
     
         <div class="card" style="width: 20rem; min-height:33rem;">
-            <img src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="card-img-top " style="width: 18rem; height: 18rem" alt=".{{ categorie.name}}">
+            <img src="{{ asset('images/categories/' ~ categorie.imageName}} }}" class="card-img-top " style="width: 18rem; height: 18rem" alt=".{{ categorie.name}}">
                 <div class="card-body" >
                     <h5 class="card-title">{{ categorie.name}}</h5>
                         <p class="card-text">  {{ categorie.description|length > 100 ? categorie.description|slice(0, 100) ~ '...' : categorie.description }}</p>
