@@ -43,7 +43,6 @@ body {
 .flex-box {
     display: flex;
     background-color: var(--bg-white);
-
     border-radius: 5px;
     padding: 10px;
     flex-direction: row;
@@ -57,12 +56,18 @@ body {
     border-radius: 35px 35px 35px 35px;
     box-shadow: 10px 5px 5px 5px var(--box-shadow);
     padding: 10px;
-    width: 25%;
-    height: 10%;
+    width: 10%;
+    min-height: 35%;
     margin: 40px;
     text-align: center;
+    margin-bottom: 40px;
 }
-
+.card-title1 {
+    margin-bottom: 30px;
+}
+.card-text1 {
+    margin-bottom: 60px;
+}
 .card1 {
 
     border: 10px solid var(--bg-blue);
@@ -75,10 +80,10 @@ body {
     text-align: center;
 }
 
-.card-img-top {
+.img-fluid {
     border-radius: 10% 10% 1% 1%;
-    width: 18rem; 
-    height: 18rem
+    width: 100%;
+   min-height: 325px;
 }
 
 .card-img-top1 {
@@ -112,11 +117,12 @@ body {
 
 .card-body1 {
     display: flex;
-    direction: column ;
-    align-items : center;
+    direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
+
 .card3 {
     padding: 10px;
     width: 25%;
@@ -181,12 +187,14 @@ footer {
         padding: 10px;
         margin: 0 auto;
     }
+
     .card-img-top {
 
         width: 250px;
         height: 225px;
         margin: 0 auto;
     }
+
     .card-img-top1 {
         width: 20em;
         height: 15rem;
@@ -199,9 +207,10 @@ footer {
         margin-top: 25px
     }
 
-.card {
-    width: 100%;
-}
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 
     .card1 {
         width: 100%;
@@ -254,7 +263,7 @@ footer {
         /* S'assurer qu'il prend toute la largeur */
     }
 
-    
+
 
     .card1 {
         width: 100%;
