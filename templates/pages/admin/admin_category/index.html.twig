@@ -36,7 +36,7 @@
 				<tbody>
 					{% for categorie in categories %}
 						<tr class="table-primary border border-primary-dark">
-							<th scope="row"><img src="http://localhost:8000/images/categories/{{ categorie.imageName }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="...{{ categorie.name}}"></th>
+							<th scope="row"><img src="{{ asset('images/categories/' ~ categorie.imageName) }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="...{{ categorie.name}}"></th>
 
 							<td>{{ categorie.name}}</td>
 							<td>

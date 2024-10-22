@@ -12,7 +12,7 @@
 					<div class="card1" style="width: 42rem; height: 32rem;">
 					<h5 class="card-title " style="color: var(--b-violet)">{{ velo.name}}</h5>
 						<a href="{{ path('velo.show', {'id': velo.id}) }}">
-							<img src="{{ asset('images/velos/' ~ velo.imageName }}" class="card-img-top" style="width: 40rem; height: 28rem;" alt="{{velo.name}}">
+							<img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top" style="width: 40rem; height: 28rem;" alt="{{velo.name}}">
 						</div>
 					</a>
 				{% endfor %}
