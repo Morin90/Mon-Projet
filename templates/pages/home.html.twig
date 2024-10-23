@@ -3,74 +3,52 @@
 	Mon Projet - Accueil
 {% endblock %}
 {% block body %}
-	<div class="container mt-4">
-		<div class="jumbotron">
-			<h1 class="display-4 text-center" style="color: var(--b-violet)">
-				<strong>Magasin de vélos Kraken
-				</strong>
+	<div class="container-fluid p-0">
+		<div class="image-container">
+			<h1 class="title-on-image">
+				<strong>Magasin de vélos Kraken</strong>
 			</h1>
-			<img class="imageHome" src="{{asset('img/imageMagasin.jpg')}}" alt="image du magasin"></img>
-		<h2 class="titreHome mt-4 mx-5 ">
-			<b>Informations Pratiques:
-			</b>
+			<img class="img-fluid imageHome" src="{{ asset('img/imageMagasin.jpg') }}" alt="image du magasin">
+		</div>
+		
+		<h2 class="titreHome1 mt-4 mx-5" style="color: var(--b-violet)">
+			<b>Informations Pratiques:</b>
 		</h2>
 
-		<section class="d-flex mx-5">
-			<div class="card2 mx-4">
-				<h4 class="titreHome mt-4">
-					<b>Adresse:
-					</b>
-				</h4>
-				<p>
-					8 Avenue de la Gare, 75015 Paris</p>
-				<div class="card2 ">
-					<h4 class="titreHome mt-4">
-						<b>Contact:
-						</b>
-					</h4>
-					<p>
-						<b>Tél:
-						</b>
-						01 02 03 04 05</p>
-					<p>
-						<b>Mail:
-						</b>
-						Kraken@velo.com</p>
-				</div>
-			</div>
-			<div class="card2 mx-5 justify-content-center">
-				<h3 class="titreHome mt-4">
-					<b>Horaires:
-					</b>
-				</h3>
-				<p>
-					<b>Lundi - Samedi
-					</b>
-					10h - 19h00</p>
-				<p>
-					<b>Dimanche
-					</b>
-					Fermé</p>
-			</div>
-			
+			<section class="row mx-5">
+				<div class="col-lg-6 col-md-12 card2 mb-4">
+					<h3 class="titreHome1 mt-4" style="color: var(--b-violet)">
+						<b>Adresse:</b>
+					</h3>
+					<p>8 Avenue de la Gare, 75015 Paris</p>
 
-		</section>
-<div class="mx-5">
-				<h3 class="titreHome mt-4">
-					<b>Description du magasin:
-					</b>
-				</h3>
-				<p>Le magasin est ouvert depuis les années 90. Depuis deux générations, il est entretenu dans la culture et l'amour du vélo.
-					  Nous accueillons aussi bien les amateurs que les professionnels, sur une superficie totale de 700 m².
-					  Nos vendeurs sont tous des professionnels du vélo. Ils pourront ainsi vous aiguiller au mieux lors de votre premier achat.
-					  Nous vous accueilleront toujours dans une ambiance familliale et conviviale.
-					  Au plaisir de vous voir en magasin.
+					<h3 class="titreHome1 mt-4" style="color: var(--b-violet)">
+						<b>Contact:</b>
+					</h3>
+					<p><b>Tel:</b> 01 02 03 04 05</p>
+					<p><b>Mail:</b> Kraken@velo.com</p>
+				</div>
+
+				<div class="col-lg-6 col-md-12 card2 mb-4">
+					<h3 class="titreHome1 mt-4" style="color: var(--b-violet)">
+						<b>Horaires:</b>
+					</h3>
+					<p><b>Lundi - Samedi:</b> 10h - 19h00</p>
+					<p><b>Dimanche:</b> Fermé</p>
+				</div>
+			</section>
+
+			<div class="mx-5">
+				<h2 class="titreHome1 mt-4" style="color: var(--b-violet)">
+					<b>Description du magasin:</b>
+				</h2>
+				<p>
+					Le magasin est ouvert depuis les années 90. Depuis deux générations, il est entretenu dans la culture et l'amour du vélo.
+					Nos vendeurs sont tous des professionnels du vélo. Ils pourront ainsi vous aiguiller au mieux lors de votre premier achat.
+					Nous vous accueillerons toujours dans une ambiance familiale et conviviale.
+					Au plaisir de vous voir en magasin.
 				</p>
 			</div>
-
+		</div>
 	</div>
-</div>
-
-
-
 {% endblock %}

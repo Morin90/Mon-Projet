@@ -20,11 +20,13 @@ body {
     top: 0;
     z-index: 100;
 }
+
 .btn1 {
     border-radius: 5px;
     text-align: center;
     width: 35%;
 }
+
 .example-wrapper {
     margin: 4em auto;
     max-width: 800px;
@@ -66,12 +68,15 @@ body {
     text-align: center;
     margin-bottom: 40px;
 }
+
 .card-title1 {
     margin-bottom: 30px;
 }
+
 .card-text1 {
     margin-bottom: 60px;
 }
+
 .card1 {
 
     border: 10px solid var(--bg-blue);
@@ -84,10 +89,10 @@ body {
     text-align: center;
 }
 
-.img-fluid {
+.img-fluid1 {
     border-radius: 10% 10% 1% 1%;
     width: 100%;
-   min-height: 325px;
+    min-height: 325px;
 }
 
 .card-img-top1 {
@@ -135,10 +140,32 @@ body {
     text-align: center;
 }
 
-.titreHome {
+.titreHome1 {
     text-decoration: underline;
 }
 
+.image-container {
+    position: relative;
+    width: 100vw;
+    height: auto;
+}
+
+.imageHome {
+    width: 100vw;
+    height: auto;
+}
+
+.title-on-image {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    text-align: center;
+    width: 100vw; 
+}
 
 .footer {
     position: absolute;
@@ -280,9 +307,11 @@ footer {
         /* Les liens sociaux s'enroulent si nécessaire */
 
     }
+
     .searchbar {
         margin-top: 5px;
     }
+
     .btn1 {
         margin-top: 5px;
     }

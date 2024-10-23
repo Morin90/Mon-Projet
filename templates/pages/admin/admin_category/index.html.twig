@@ -5,20 +5,21 @@
 
 {% block body %}
 	<div class="container mt-4">
-		{% if not categories.items is same as ([]) %}
-			<div class="d-flex justify-content-center">
-				<h1>Nos Categories / Admin</h1>
-				<a href=" {{ path('admin_category.new') }}" class="btn btn-primary ms-5" style="width: 12rem;">
-					Créer une catégorie
-				</a>
-			</div>
-			{% for message in app.flashes('success') %}
+	{% for message in app.flashes('success') %}
 				<div class="alert alert-success">
 					{{ message }}
 				</div>
 			{% endfor %}
-			<div class="count">
-				<h4>Il y a
+		{% if not categories.items is same as ([]) %}
+			<div class="d-flex justify-content-center">
+				<h1 class="mt-4" style="color: var(--b-violet)">Nos Categories / Admin</h1>
+				
+			</div>
+			<div class="count text-center">
+			<a href=" {{ path('admin_category.new') }}" class="btn btn-primary ms-5 mt-4"  role="button">
+					Créer une catégorie
+				</a>
+				<h4 class="mt-4">Il y a
 					{{categories.totalItemCount}}
 					Catégories au total.
 				</h4>

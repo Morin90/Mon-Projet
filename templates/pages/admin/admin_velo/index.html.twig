@@ -13,12 +13,15 @@
 			</div>
 		{% endfor %}
 		{% if not velos.items is same as ([]) %}
-			<h1>Nos Vélos / Admin</h1>
-			<a href=" {{ path('velo.new') }}" class="btn btn-primary">
+		<div class="d-flex justify-content-center">
+			<h1 class="mt-4" style="color: var(--b-violet)">Nos Vélos / Admin</h1>
+		</div>
+			
+			<div class="count text-center">
+			<a href=" {{ path('velo.new') }}" class="btn btn-primary ms-5 mt-4">
 				Créer un Vélo
 			</a>
-			<div class="count">
-				<h4>Il y a
+				<h4 class="mt-4">Il y a
 					{{velos.totalItemCount}}
 					Vélos au total.
 				</h4>
