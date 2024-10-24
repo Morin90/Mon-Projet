@@ -3,7 +3,7 @@
     <div class="footer-container py-4 pb-0 bg-dark">
         <div class="card2 d-flex justify-content-left text-white footer-content">
             <div class="card-body">
-                <h4 class="card-title">Besoin d'aide</h4>
+                <h3 class="card-title">Besoin d'aide</h3>
                 <br>
                 {% if app.user %}
                     <a class="card-text text-white" href="{{ path('user.edit', {'id': app.user.id}) }}">
@@ -18,7 +18,7 @@
             <!-- Section: Social media -->
             <section class="mb-4">
 			<br>
-				<h4 class="text-center text-white">Contactez-nous sur les réseaux sociaux !</h4>
+				<h3 class="text-center text-white">Contactez-nous sur les réseaux sociaux !</h3>
 				<!-- Facebook -->
 				<a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #3b5998;" alt="Facebook" href="#!" role="button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewbox="0 0 16 16">

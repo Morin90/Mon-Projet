@@ -202,23 +202,37 @@ class Velo
 
     public function addNote(Notes $note): static
     {
-        if (!$this->notes->contains($note)) {
-            $this->notes->add($note);
-            $note->setVelo($this);
-        }
+    // Vérifie si la note n'est pas déjà présente dans la collection "notes"
+    if (!$this->notes->contains($note)) {
+        
+        // Si la note n'est pas présente, on l'ajoute à la collection de "notes" de l'objet courant
+        $this->notes->add($note);
+        
+        // Ensuite, on définit la relation bidirectionnelle en associant cette note
+        // à l'objet courant (vélo), en appelant "setVelo" sur la note
+        $note->setVelo($this);
+    }
 
-        return $this;
+    // Retourne l'instance courante après avoir ajouté la note
+    return $this;
     }
 
     public function removeNote(Notes $note): static
     {
+        // Vérifie si la note est présente dans la collection "notes" de l'objet courant
         if ($this->notes->removeElement($note)) {
-            // set the owning side to null (unless already changed)
+            
+            // Si la note était bien présente et a été retirée, vérifier si la relation
+            // entre la note et le vélo est encore établie
             if ($note->getVelo() === $this) {
+                
+                // Si la note est encore liée à ce vélo, on retire cette relation
+                // en définissant la relation côté "note" (propriété "velo") à null
                 $note->setVelo(null);
             }
         }
-
+    
+        // Retourne l'instance courante après avoir modifié la collection de notes
         return $this;
     }
 

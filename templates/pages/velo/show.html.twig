@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Mon projet - {{ velo.name}}
+{% block title %}Kraken - {{ velo.name}}
 {% endblock %}
 
 {% block body %}
@@ -10,7 +10,6 @@
 
 		<div class="cardV" style="width: 50rem;">
 			<image src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top1" style ="" alt=".{{ velo.name}}">
-		</image>
 	</div>
 	<div class="card-body d-flex justify-content-start flex-column align-items-center " style="width: 25rem;">
 		<div class="flex-price " style="color: var(--text-red)">
@@ -23,38 +22,22 @@
 			<div class="col-md-4">
 				<label for="inputState" class="form-label">Taille</label>
 				<select id="inputState" class="form-select">
-					<option selected>M</option>
-					<option selected>L</option>
-					<option selected>XL</option>
+					<option selected>{{ velo.taille}}</option>
+					
 				</select>
 			</div>
 <div class="col-md-4">
 				<label for="inputState" class="form-label">Roues</label>
 				<select id="inputState" class="form-select">
-					<option selected>20</option>
-					<option selected>21</option>
-					<option selected>22</option>
-					<option selected>23</option>
-					<option selected>24</option>
-					<option selected>25</option>
-					<option selected>26</option>
-					<option selected>27</option>
-					<option selected>28</option>
-					<option selected>29</option>
+					<option selected>{{ velo.roues}}</option>
+					
 				</select>
 			</div>
 			<div class="col-md-4">
 				<label for="inputState" class="form-label">Vitesses</label>
 				<select id="inputState" class="form-select">
-					<option selected>7</option>
-					<option selected>8</option>
-					<option selected>9</option>
-					<option selected>10</option>
-					<option selected>11</option>
-					<option selected>12</option>
-					<option selected>13</option>
-					<option selected>14</option>
-					<option selected>15</option>
+					<option selected>{{ velo.vitesses}}</option>
+					
 				</select>
 			</div>
 		{% endif %}
