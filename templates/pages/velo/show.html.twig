@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Kraken - {{ velo.name}}
+{% block title %}Mon projet - {{ velo.name}}
 {% endblock %}
 
 {% block body %}
@@ -22,21 +22,21 @@
 			<div class="col-md-4">
 				<label for="inputState" class="form-label">Taille</label>
 				<select id="inputState" class="form-select">
-					<option selected>{{ velo.taille}}</option>
+					<option selected>{{ details.taille}}</option>
 					
 				</select>
 			</div>
 <div class="col-md-4">
 				<label for="inputState" class="form-label">Roues</label>
 				<select id="inputState" class="form-select">
-					<option selected>{{ velo.roues}}</option>
+					<option selected>{{ details.roues}}</option>
 					
 				</select>
 			</div>
 			<div class="col-md-4">
 				<label for="inputState" class="form-label">Vitesses</label>
 				<select id="inputState" class="form-select">
-					<option selected>{{ velo.vitesses}}</option>
+					<option selected>{{ details.vitesses}}</option>
 					
 				</select>
 			</div>
