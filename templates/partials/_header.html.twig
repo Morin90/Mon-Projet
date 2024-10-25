@@ -56,16 +56,16 @@
 	{% if app.user  %}
 		<div>
 
-			<a class="nav-link   text-dark ms-3 " href="{{ path('security.logout') }}">
+			<a class="nav-link fs-5 text-dark ms-3 " href="{{ path('security.logout') }}">
 				Déconnexion
 			</a>
 		</div>
 	{% else %}
 		<div>
-			<a class="nav-link  text-dark " href="{{ path('security.login') }}">
+			<a class="nav-link fs-5  text-dark " href="{{ path('security.login') }}">
 				Connexion
 			</a>
-			<a class="nav-link  text-dark " href="{{ path('security.registration') }}">
+			<a class="nav-link fs-5  text-dark " href="{{ path('security.registration') }}">
 			Inscription
 			</a>
 		</div>
