@@ -184,6 +184,9 @@ body {
 footer {
     margin-top: auto;
 }
+.nav-link {
+    font-size: 2rem;
+}
 
 @media (max-width: 600px) {
 
@@ -326,5 +329,8 @@ footer {
         padding: 10px;
         text-align: center;
         width: 100vw; 
+    }
+    .nav-link {
+        font-size: 1rem;
     }
 }
