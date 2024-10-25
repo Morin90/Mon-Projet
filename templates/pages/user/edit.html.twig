@@ -15,8 +15,10 @@
 {{form(form)}}
 
 </div>
-<a class="btn btn-primary mt-4" style="width: 18rem;" href="{{ path('user.edit.password', {'id': app.user.id}) }}" role="button">
-				<p>Modifier mon mot de passe</p>
+<div class="d-flex justify-content-center">
+<a class="btn mt-4" style="width: 16rem; height: 2.75rem; background-color: var(--b-violet) " href="{{ path('user.edit.password', {'id': app.user.id}) }}" role="button">
+				<p class="text-white" style="text-align: center; padding-top: 0.25rem">Modifier mon mot de passe</p>
 			</a>
+</div>
             {% endif %}
 {% endblock %}

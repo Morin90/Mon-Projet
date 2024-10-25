@@ -42,7 +42,8 @@ class UserPasswordType extends AbstractType
         ])
         ->add ('submit', SubmitType::class, [
             'attr' => [
-                'class' => 'btn btn-primary mt-2'
+                'class' => 'btn btn-primary mt-2',
+                'style' => 'background-color: var(--b-violet)'
             ],
             'label' => 'Mettre a jour'
         ])

@@ -16,19 +16,19 @@
 				
 			</div>
 			<div class="count text-center">
-			<a href=" {{ path('admin_category.new') }}" class="btn btn-primary ms-5 mt-4"  role="button">
+			<a href=" {{ path('admin_category.new') }}" class="btn btn-primary ms-5 mt-4"  role="button" style="background-color: var(--b-violet)">
 					Créer une catégorie
 				</a>
-				<h4 class="mt-4">Il y a
+				<h2 class="mt-4">Il y a
 					{{categories.totalItemCount}}
 					Catégories au total.
-				</h4>
+				</h2>
 			</div>
 
 			<table class="table table-hover mt-4 border border-primary-dark align-middle">
 				<thead>
 					<tr>
-						<th scope="col">Numéro</th>
+						<th scope="col" class="col-md-4" >Image</th>
 						<th scope="col">Nom</th>
 						<th scope="col">Edition</th>
 						<th scope="col">Suppression</th>
@@ -55,8 +55,8 @@
 				{{ knp_pagination_render(categories) }}
 			</div>
 		{% else %}
-			<h4>Il n'y a pas de catégories.
-			</h4>
+			<h2>Il n'y a pas de catégories.
+			</h2>
 		{% endif %}
 	</div>
 {% endblock %}

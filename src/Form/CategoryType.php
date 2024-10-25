@@ -77,7 +77,8 @@ class CategoryType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-outline-info mt-4 mb-4 mx-auto d-block'
+                    'class' => 'btn text-white mt-4 mb-4 mx-auto d-block',
+                    'style' => 'background-color: var(--b-violet)'
                 ],
                 'label' => 'Créer votre catégorie'
             ])
