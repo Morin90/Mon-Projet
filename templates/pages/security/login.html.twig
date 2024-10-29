@@ -14,18 +14,21 @@
 <div class="alert alert-danger">
     {{ error.messageKey | trans(error.messageData, 'security') }}
 </div>
-
 {% endif %}
 
 <form action="{{ path('security.login') }}" method="POST">
-<div>
+    <div>
         <label for="username" class="form-label mt-4">Addresse mail</label>
-        <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="_username" placeholder="Exemple de mail : exemple@gmail.com" value="{{lastUsername}}">
+        <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="_username" placeholder="Exemple de mail : exemple@gmail.com" value="{{ lastUsername }}">
         <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre mail avec quelqu'un d'autre.</small>
     </div>
     <div>
         <label for="password" class="form-label mt-4">Votre mot de passe</label>
         <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe sécurisé" autocomplete="off">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me">
+        <label class="form-check-label" for="remember_me">Remember me!</label>
     </div>
     <button type="submit" class="btn btn-primary mt-4">Se connecter</button>
 </form>

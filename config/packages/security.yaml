@@ -26,7 +26,12 @@ security:
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
-
+            remember_me:
+                secret: '%kernel.secret%'    # Utilise le secret de l'application pour sécuriser le cookie
+                lifetime: 14400             # Durée de vie du cookie en secondes (14400s = 4h)
+                path: '/'                    # Chemin du cookie (généralement la racine du site)
+                name: REMEMBERME             # Nom du cookie
+                always_remember_me: false    # Définissez sur true si vous voulez toujours activer "remember me"
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
