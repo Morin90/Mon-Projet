@@ -41,3 +41,4 @@ stars.forEach(star => {
 
 });
 /*ligne 21 /  await fetch(`http://localhost:8000/note?note=${note}&veloId=${veloId}&userId=${event.target.parentNode.dataset.userId} en mode developpement*/
+/*await fetch(`https://magasin-velo-kraken-7fcdb570f12c.herokuapp.com/note?note=${note}&veloId=${veloId}&userId=${event.target.parentNode.dataset.userId}` mode production*/

@@ -10,29 +10,11 @@ class UserPasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) :void {
         $builder
-            
-        ->add('plainPassword', RepeatedType::class, [
-            'type' => PasswordType::class,
-            'first_options' => [
-                'label' => 'Mot de passe',
-                'attr' => [
-                    'class' => 'form-control mt-2'
-                ]
-            ],
-            'second_options' => [
-                'label' => 'Confirmez votre mot de passe',
-                'attr' => [
-                    'class' => 'form-control mt-2 mb-3'
-                ]
-            ],
-            'invalid_message' => 'Les mots de passe ne correspondent pas',
-        ])
-        
-        ->add('newPassword', PasswordType::class, [
+        ->add('plainPassword', PasswordType::class, [
             'attr' => [
                 'class' => 'form-control mt-2'
             ],
-            'label' => 'Nouveau mot de passe',
+            'label' => 'Ancien mot de passe',
             'label_attr' => [
                 'class' => 'form-label mt-4'
             ],
@@ -40,6 +22,24 @@ class UserPasswordType extends AbstractType
                 new Assert\NotBlank()
                 ]
         ])
+        ->add('newPassword', RepeatedType::class, [
+            'type' => PasswordType::class,
+            'first_options' => [
+                'label' => 'Nouveau mot de passe',
+                'attr' => [
+                    'class' => 'form-control mt-2'
+                ]
+            ],
+            'second_options' => [
+                'label' => 'Confirmez votre nouveau mot de passe',
+                'attr' => [
+                    'class' => 'form-control mt-2 mb-3'
+                ]
+            ],
+            'invalid_message' => 'Les mots de passe ne correspondent pas',
+        ])
+        
+        
         ->add ('submit', SubmitType::class, [
             'attr' => [
                 'class' => 'btn btn-primary mt-2',
