@@ -1,24 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Kraken - Catégories public{% endblock %}
+{% block title %}Kraken - Catégories public
+{% endblock %}
 
 {% block body %}
-<div class="container mt-4 text-center" style="color: var(--b-violet)">
-<h1>Toutes nos catégories</h1>
+	<div class="container mt-4 text-center" style="color: var(--b-violet)">
+		<h1>Toutes nos catégories</h1>
 
 
-    <div class="flex-box">
-    {% for categorie in categories %}
-    
-        <div class="card" style="width: 20rem; min-height:33rem;">
-            <img src="{{ asset('images/categories/' ~ categorie.imageName)}}" class="img-fluid1 " alt=".{{ categorie.name}}"><img>
-                <div class="card-body" >
-                    <h5 class="card-title1">{{ categorie.name}}</h5>
-                        <p class="card-text1">  {{ categorie.description|length > 100 ? categorie.description|slice(0, 100) ~ '...' : categorie.description }}</p>
-                            <a href="{{ path('category.showone', {'id': categorie.id}) }}" class="btn btn-primary" role="button" style="background-color: var(--b-violet)"> Voir {{ categorie.name}} </a>
-                </div>
-        </div>
-    {% endfor %}
-        </div>
-</div>
+		<div class="flex-box">
+			{% for categorie in categories %}
+
+				<div class="card" style="width: 20rem; min-height:33rem;">
+					<a href="{{ path('category.showone', {'id': categorie.id}) }}">
+						<img src="{{ asset('images/categories/' ~ categorie.imageName)}}" class="img-fluid1 " alt=".{{ categorie.name}}"><img>
+						<div class="card-body">
+							<h5 class="card-title1">{{ categorie.name}}</h5>
+						</a>
+						<p class="card-text1">
+							{{ categorie.description|length > 100 ? categorie.description|slice(0, 100) ~ '...' : categorie.description }}</p>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
