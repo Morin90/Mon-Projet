@@ -216,6 +216,17 @@ footer {
 .cookie-modal-actions button {
     margin: 10px;
 }
+#revokeCookies {
+    color: var(--b-violet) !important;
+    border: none !important;
+    border-radius: 5px !important;
+}
+#revokeCookies:hover {
+    background-color: var(--b-violet2) !important; /* Maintient la couleur lors du survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Ombre similaire à l'effet de survol de Bootstrap */
+    color: var(--bg-white) !important; /* Met la couleur de texte en blanc */
+    transform: translateY(-2px) !important; /* Laisse une petite ombre sous le bouton lors du survol */
+}
 .nav-separator::before {
     content: "";
     position: absolute;
