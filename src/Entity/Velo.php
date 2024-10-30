@@ -64,9 +64,6 @@ class Velo
     #[ORM\OneToMany(targetEntity: Notes::class, mappedBy: 'velo', orphanRemoval: true)]
     private Collection $notes;
 
-    #[ORM\Column(length: 25)]
-    private ?string $marque = null;
-
     /**
      * @var Collection<int, Frame>
      */
@@ -84,6 +81,10 @@ class Velo
      */
     #[ORM\ManyToMany(targetEntity: Transmission::class, mappedBy: 'velos')]
     private Collection $transmissions;
+
+    #[ORM\ManyToOne(inversedBy: 'velos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Brand $brand = null;
 
     //  Constructor
     public function __construct()
@@ -253,19 +254,6 @@ class Velo
         // Retourne l'instance courante après avoir modifié la collection de notes
         return $this;
     }
-
-    public function getMarque(): ?string
-    {
-        return $this->marque;
-    }
-
-    public function setMarque(string $marque): static
-    {
-        $this->marque = $marque;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Frame>
      */
@@ -343,6 +331,18 @@ class Velo
         if ($this->transmissions->removeElement($transmission)) {
             $transmission->removeVelo($this);
         }
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): static
+    {
+        $this->brand = $brand;
 
         return $this;
     }

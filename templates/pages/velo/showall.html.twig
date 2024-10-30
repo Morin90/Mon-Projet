@@ -27,7 +27,7 @@
                 
                 <div class="card3 " style="width: 20rem; min-height:37rem;">
                     <a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn">
-                        <h2 style="color: var(--b-violet)">{{ velo.marque}}</h2>
+                        <h2 style="color: var(--b-violet)">{{ velo.brand.name}}</h2>
                         {# Image du vélo, récupérée depuis le dossier `images/velos` grâce à VichUploader #}
                         <img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top" style="width: 18rem; height: 18rem" alt="{{ velo.name}}">
                         <div class="card-body">

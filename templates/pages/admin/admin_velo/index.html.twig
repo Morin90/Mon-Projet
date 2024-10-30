@@ -46,7 +46,7 @@
 						<tr class="table-primary border border-primary-dark">
 							<th scope="row"><img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="{{ velo.imageName}}"></th>
 							<td>{{ velo.name}}</td>
-							<td>{{ velo.marque }}</td>
+							<td>{{ velo.brand.name }}</td>
 							<td>{{ velo.prix }}€</td>
 
 							<td>{{ velo.categorie ? velo.categorie.name : 'aucune'}}</td>

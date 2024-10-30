@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Brand;
 use App\Entity\Frame;
 use App\Entity\Transmission;
 use App\Entity\Velo;
@@ -38,18 +39,17 @@ class VeloType extends AbstractType
                     new Assert\NotBlank()
                 ],
             ])
-            ->add('marque', TextType::class, [
+            ->add('brand', EntityType::class, [
+                'class' => Brand::class,
+                'choice_label' => 'name',
                 'attr' => [
                     'class' => 'form-control',
-                    'minlength' => '3',
-                    'maxlength' => '25'
                 ],
                 'label' => 'Marque du vélo',
                 'label_attr' => [
                     'class' => 'form-label mt-2'
                 ],
                 'constraints' => [
-                    new Assert\Length(['min' => 3, 'max' => 25]),
                     new Assert\NotBlank()
                 ]
                 ])
@@ -72,19 +72,22 @@ class VeloType extends AbstractType
                 'class' => Frame::class,
                 'choice_label' => 'size',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'by_reference' => false
             ])
             ->add('wheels', EntityType::class, [
                 'class' => Wheel::class,
                 'choice_label' => 'size',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'by_reference' => false
             ])
             ->add('transmissions', EntityType::class, [
                 'class' => Transmission::class,
                 'choice_label' => 'number',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'by_reference' => false
             ])
             // ->add('taille',TextType::class, [
             //     'attr' => [

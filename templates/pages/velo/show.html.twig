@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-	<h3 class="mt-2 text-center " style="color: var(--b-violet)">{{ velo.marque}}</h3>
+	<h3 class="mt-2 text-center " style="color: var(--b-violet)">{{ velo.brand.name}}</h3>
 	<h2 class="mt-1 text-center">{{ velo.name}}</h2>
 
 	<div class="flex-box">
@@ -24,29 +24,31 @@
 					€</h3>
 			</div>
 			<p class="card-text">{{ velo.description}}</p>
-			{# {% if details %}
+			
 				<div class="col-md-4">
 					<label for="inputState" class="form-label">Taille</label>
 					<select id="inputState" class="form-select">
-						<option selected>{{ details.taille}}</option>
-
+						{% for frame in velo.frames %}
+							<option>{{ frame.size}}</option>
+						{% endfor %}
 					</select>
 				</div>
 				<div class="col-md-4">
 					<label for="inputState" class="form-label">Roues</label>
 					<select id="inputState" class="form-select">
-						<option selected>{{ details.roues}}</option>
-
+						{% for wheel in velo.wheels %}
+							<option>{{ wheel.size}}</option>
+						{% endfor %}
 					</select>
 				</div>
 				<div class="col-md-4">
 					<label for="inputState" class="form-label">Vitesses</label>
 					<select id="inputState" class="form-select">
-						<option selected>{{ details.vitesse}}</option>
-
+						{% for transmission in velo.transmissions %}
+							<option>{{ transmission.number}}</option>
+						{% endfor %}
 					</select>
 				</div>
-			{% endif %} #}
 			<div class="mt-1 mx-5">
 				{% for i in 1..5 %}
 					{% if i <= notes %}

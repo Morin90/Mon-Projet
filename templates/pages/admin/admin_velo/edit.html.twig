@@ -7,7 +7,13 @@
 		<h1 class="mt-4" style="color: var(--b-violet)">Modification d'un Vélo / Admin</h1>
 		{{ form_start(form) }}
 
-
+		<div class="form-group2">
+			{{form_label(form.brand)}}
+			{{form_widget(form.brand)}}
+			<div class="form-error">
+				{{ form_errors(form.brand) }}
+			</div>
+		</div>
 		<div class="form-group1">
 			{{form_label(form.name)}}
 			{{form_widget(form.name)}}
@@ -15,13 +21,7 @@
 				{{ form_errors(form.name) }}
 			</div>
 		</div>
-		<div class="form-group2">
-			{{form_label(form.marque)}}
-			{{form_widget(form.marque)}}
-			<div class="form-error">
-				{{ form_errors(form.marque) }}
-			</div>
-		</div>
+		
 		<div class="form-group4">
 			{{form_label(form.description)}}
 			{{form_widget(form.description)}}
@@ -29,25 +29,25 @@
 				{{ form_errors(form.description) }}
 			</div>
 		</div>
-		{# <div class="form-group5">
-			{{form_label(form.taille)}}
-			{{form_widget(form.taille)}}
+		<div class="form-group5">
+			{{form_label(form.frames)}}
+			{{form_widget(form.frames)}}
 			<div class="form-error">
-				{{ form_errors(form.taille) }}
+				{{ form_errors(form.frames) }}
 			</div>
 		</div><div class="form-group6">
-			{{form_label(form.roues)}}
-			{{form_widget(form.roues)}}
+			{{form_label(form.wheels)}}
+			{{form_widget(form.wheels)}}
 			<div class="form-error">
-				{{ form_errors(form.roues) }}
+				{{ form_errors(form.wheels) }}
 			</div>
 		</div><div class="form-group7">
-			{{form_label(form.vitesses)}}
-			{{form_widget(form.vitesses)}}
+			{{form_label(form.transmissions)}}
+			{{form_widget(form.transmissions)}}
 			<div class="form-error">
-				{{ form_errors(form.vitesses) }}
+				{{ form_errors(form.transmissions) }}
 			</div>
-		</div> #}
+		</div>
 		<div class="form-group8">
 			{{form_label(form.prix)}}
 			{{form_widget(form.prix)}}
@@ -55,15 +55,17 @@
 				{{ form_errors(form.prix) }}
 			</div>
 		</div>
-		</div>
-		{{form_row(form.submit) }}
-	</div>
+	
 		<div class="from-group9">
             {{form_label(form.imageFile)}}
             {{form_widget(form.imageFile)}}
 			<div class="form-error">
                 {{ form_errors(form.imageFile) }}
             </div>
-			{{form_row(form._token) }}
-	{{ form_end(form) }}
-</div>{% endblock %}
+		</div>
+		{{form_row(form.submit) }}
+
+		{{ form_end(form) }}
+</div>
+
+{% endblock %}
