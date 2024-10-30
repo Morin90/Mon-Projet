@@ -32,4 +32,16 @@
             const parts = value.split("; " + name + "=");
             if (parts.length === 2) return parts.pop().split(";").shift();
         }
+        // Révoquer le consentement aux cookies
+        document.getElementById("revokeCookies").addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche le lien de recharger la page
+            eraseCookie("cookieConsent"); // Efface le cookie
+            alert("Votre consentement aux cookies a été réinitialisé. La prochaine fois que vous visiterez cette page, vous pourrez refaire votre choix.");
+            location.reload(); // Rafraîchit la page pour afficher la modale
+        });
+
+        // Fonction pour effacer un cookie
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
     });
