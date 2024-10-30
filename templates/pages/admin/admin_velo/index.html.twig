@@ -13,14 +13,14 @@
 			</div>
 		{% endfor %}
 		{% if not velos.items is same as ([]) %}
-		<div class="d-flex justify-content-center">
-			<h1 class="mt-4" style="color: var(--b-violet)">Nos Vélos / Admin</h1>
-		</div>
-			
+			<div class="d-flex justify-content-center">
+				<h1 class="mt-4" style="color: var(--b-violet)">Nos Vélos / Admin</h1>
+			</div>
+
 			<div class="count text-center">
-			<a href=" {{ path('velo.new') }}" class="btn btn-primary ms-5 mt-4"  role="button" style="background-color: var(--b-violet)">
-				Créer un Vélo
-			</a>
+				<a href="{{ path('velo.new') }}" class="btn btn-custom ms-5 mt-4" role="button">
+					Créer un Vélo
+				</a>
 				<h4 class="mt-4">Il y a
 					{{velos.totalItemCount}}
 					Vélos au total.
@@ -30,7 +30,7 @@
 			<table class="table table-hover mt-4 border border-primary-dark align-middle">
 				<thead>
 					<tr>
-						<th scope="col" class="col-md-2 text-center" >Image</th>
+						<th scope="col" class="col-md-2 text-center">Image</th>
 						<th scope="col">Nom</th>
 						<th scope="col">Marque</th>
 						<th scope="col">Prix</th>
@@ -48,7 +48,7 @@
 							<td>{{ velo.name}}</td>
 							<td>{{ velo.marque }}</td>
 							<td>{{ velo.prix }}€</td>
-							
+
 							<td>{{ velo.categorie ? velo.categorie.name : 'aucune'}}</td>
 							<td>{{ velo.createdAt|date('d/m/Y') }}</td>
 							<td>

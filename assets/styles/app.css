@@ -1,6 +1,7 @@
 :root {
     --bg-blue: #c6dbfc;
     --b-violet: #545ff3;
+    --b-violet2: rgb(68, 78, 216);
     --box-shadow: rgb(136, 136, 130);
     --bg-white: white;
     --b-flex: #ccc;
@@ -214,6 +215,54 @@ footer {
 
 .cookie-modal-actions button {
     margin: 10px;
+}
+.nav-separator::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%; /* Hauteur du séparateur */
+    width: 2px; /* Largeur du séparateur */
+    opacity: 0.6; /* Transparence pour un look plus doux */
+    border-radius: 5px; /* Pour des bords arrondis */
+}
+
+/* Espacement supplémentaire pour rendre la barre de navigation plus aérée */
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.navbar .nav-link {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #333333 !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: var(--b-violet) !important; /* Couleur lors du survol */
+    text-decoration: underline; /* Effet souligné au survol */
+}
+
+/* Style pour les icônes (facultatif, si vous voulez ajouter des icônes dans le HTML) */
+.navbar .nav-link i {
+    margin-right: 5px;
+    color: var(--bg-blue);
+}
+/* Effet de survol pour le bouton personnalisé */
+.btn-custom {
+    background-color: var(--b-violet); /* Couleur de fond du bouton */
+    color: var(--bg-white);
+    border: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease; /* Animation fluide pour l'effet de survol */
+}
+
+.btn-custom:hover {
+    background-color: var(--b-violet2); /* Maintient la couleur lors du survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre similaire à l'effet de survol de Bootstrap */
+    color: var(--bg-white);
+    transform: translateY(-2px); /* Légère translation pour effet de profondeur */
 }
 @media (max-width: 600px) {
 
