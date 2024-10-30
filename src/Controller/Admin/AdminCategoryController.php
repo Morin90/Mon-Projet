@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Velo;
 use App\Entity\Categorie;
 use App\Form\CategoryType;
 use App\Repository\VeloRepository;

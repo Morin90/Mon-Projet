@@ -4,8 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Velo;
 use App\Form\VeloType;
-use App\Entity\Details;
-use App\Repository\DetailsRepository;
 use App\Repository\VeloRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;

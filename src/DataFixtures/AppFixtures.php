@@ -6,8 +6,9 @@ use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Velo;
 use Faker\Generator;
-use App\Entity\Categorie;
+use App\Entity\Brand;
 use App\Entity\Details;
+use App\Entity\Categorie;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -40,15 +41,18 @@ class AppFixtures extends Fixture
         // Vélos
         for ($i = 1; $i <= 50; $i++) {
             $velo = new Velo();
-
+            $brand = new Brand();
             // Association aléatoire d'une catégorie à un vélo
             $categorie = $categories[array_rand($categories)];
 
+            // Association aléatoire d'un nom à une marque
+            $brand->setName($this->faker->word());
+
             $velo->setName($this->faker->word())
-                ->setMarque($this->faker->word())
+                ->setBrand($brand)
                 ->setPrix(mt_rand(999, 2499))
                 ->setCategorie($categorie)
-                ->setImageName($this->faker ->imageUrl(640, 480, 'bike', true));
+                ->setImageName($this->faker->imageUrl(640, 480, 'bike', true));
 
 
             $velos[] = $velo;
