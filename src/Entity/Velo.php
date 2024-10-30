@@ -68,18 +68,21 @@ class Velo
      * @var Collection<int, Frame>
      */
     #[ORM\ManyToMany(targetEntity: Frame::class, mappedBy: 'velos')]
+    #[Assert\Count(min: 1, minMessage: 'Sélectionner au moins une taille de cadre')]
     private Collection $frames;
 
     /**
      * @var Collection<int, Wheel>
      */
     #[ORM\ManyToMany(targetEntity: Wheel::class, mappedBy: 'velos')]
+    #[Assert\Count(min: 1, minMessage: 'Sélectionner au moins une taille de roue')]
     private Collection $wheels;
 
     /**
      * @var Collection<int, Transmission>
      */
     #[ORM\ManyToMany(targetEntity: Transmission::class, mappedBy: 'velos')]
+    #[Assert\Count(min: 1, minMessage: 'Sélectionner au moins un nombre de vitesse')]
     private Collection $transmissions;
 
     #[ORM\ManyToOne(inversedBy: 'velos')]
