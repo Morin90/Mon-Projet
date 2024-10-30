@@ -77,6 +77,9 @@ class VeloType extends AbstractType
                 'by_reference' => false,
                 'attr' => [
                     'class' => 'example-wrapper'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
                 ]
             ])
             ->add('wheels', EntityType::class, [
@@ -87,6 +90,9 @@ class VeloType extends AbstractType
                 'by_reference' => false,
                 'attr' => [
                     'class' => 'example-wrapper'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
                 ]
             ])
             ->add('transmissions', EntityType::class, [
@@ -96,49 +102,20 @@ class VeloType extends AbstractType
                 'expanded' => true,
                 'by_reference' => false,
                 'attr' => [
-                    'class' => 'example-wrapper'
+                    'class' => 'example-wrapper p-3'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
                 ]
             ])
-            // ->add('taille',TextType::class, [
-            //     'attr' => [
-            //         'class' => 'form-control'   
-            //     ],
-            //     'label' => 'Taille du vélo',
-            //     'constraints' => [
-            //         new Assert\NotBlank(),
-            //         new Assert\Positive()
-            //     ],
-            //     'mapped' => false
-            //     ])
-            //     ->add('vitesses', IntegerType::class, [
-            //         'attr' => [
-            //             'class' => 'form-control'   
-            //         ],
-            //         'label' => 'Nombre de vitesses',
-            //         'constraints' => [
-            //             new Assert\NotBlank(),
-            //             new Assert\Positive()
-            //         ],
-            //         'mapped' => false
-            //         ])
-            // ->add ('roues', IntegerType::class, [
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ],
-            //     'label' => 'Taille de roues',
-            //     'constraints' => [ 
-            //         new Assert\NotBlank(),  
-            //         new Assert\Positive()
-            //     ],
-            //     'mapped' => false
-            //     ])
             ->add('prix', MoneyType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control mt-2 mt-2 form-control-lg',
+                    'style' => 'width: 50%'
                 ],
-                'label' => 'Prix    ',
+                'label' => 'Prix du vélo',
                 'label_attr' => [
-                    'class' => 'form-label mt-2'
+                    'class' => 'form-label1 '
                 ],
                 'constraints' => [
                     new Assert\Positive(),
