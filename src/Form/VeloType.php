@@ -34,6 +34,7 @@ class VeloType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-2'
                 ],
+                
                 'constraints' => [
                     new Assert\Length(['min' => 3, 'max' => 50]),
                     new Assert\NotBlank()
@@ -69,25 +70,34 @@ class VeloType extends AbstractType
                 ]
             ])
             ->add('frames', EntityType::class, [
-                'class' => Frame::class,
+                'class' => Frame::class ,
                 'choice_label' => 'size',
                 'multiple' => true,
                 'expanded' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'attr' => [
+                    'class' => 'example-wrapper'
+                ]
             ])
             ->add('wheels', EntityType::class, [
                 'class' => Wheel::class,
                 'choice_label' => 'size',
                 'multiple' => true,
                 'expanded' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'attr' => [
+                    'class' => 'example-wrapper'
+                ]
             ])
             ->add('transmissions', EntityType::class, [
                 'class' => Transmission::class,
                 'choice_label' => 'number',
                 'multiple' => true,
                 'expanded' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'attr' => [
+                    'class' => 'example-wrapper'
+                ]
             ])
             // ->add('taille',TextType::class, [
             //     'attr' => [
