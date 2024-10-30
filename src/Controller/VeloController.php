@@ -21,9 +21,9 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
     $velo = $repository->find($velo->getId());
 
     // Récupère les détails spécifiques du vélo (taille, roues, etc.)
-    $details = $velo->getDetails();
-    $taille = $details->getTaille(); // Taille du vélo
-    $roues = $details->getRoues();   // Taille des roues
+    // $details = $velo->getDetails();
+    // $taille = $details->getTaille(); // Taille du vélo
+    // $roues = $details->getRoues();   // Taille des roues
 
     // Récupère la note moyenne attribuée à ce vélo
     $averageRating = $notesRepository->findAverageRating($velo->getId());
@@ -32,9 +32,9 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
     return $this->render('pages/velo/show.html.twig', [
         'velo' => $velo,               // Les informations du vélo
         'notes' => $averageRating[1],  // La note moyenne attribuée à ce vélo
-        'details' => $details,         // Les détails du vélo
-        'taille' => $taille,           // Taille du vélo
-        'roues' => $roues              // Roues du vélo
+        // 'details' => $details,         // Les détails du vélo
+        // 'taille' => $taille,           // Taille du vélo
+        // 'roues' => $roues              // Roues du vélo
     ]);
 }
     #[Route('/velo/showall', name: 'velo.showall', methods: ['GET'])]

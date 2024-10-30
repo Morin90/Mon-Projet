@@ -55,15 +55,10 @@ class AdminVeloController extends AbstractController
         $velo = new Velo();
         $form = $this->createForm(VeloType::class, $velo);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            // dd($velo, $request->request->all());
             $manager->persist($velo);
-            $manager->flush();
-            $details = new Details();
-            $details->setVelo($velo);
-            $details->setTaille($form->get('taille')->getData());
-            $details->setRoues($form->get('roues')->getData());
-            $details->setVitesse($form->get('vitesses')->getData());
-            $manager->persist($details);
             $manager->flush();
 
             $this->addFlash(
@@ -94,29 +89,19 @@ class AdminVeloController extends AbstractController
     { //Création du formulaire
         $form = $this->createForm(VeloType::class, $velo);
         //Préremplir les champs du formulaire avec les détails du velo
-        $form->get('taille')->setData($velo->getDetails()->getTaille());
-        $form->get('roues')->setData($velo->getDetails()->getRoues());
-        $form->get('vitesses')->setData($velo->getDetails()->getVitesse());
+        // $form->get('taille')->setData($velo->getDetails()->getTaille());
+        // $form->get('roues')->setData($velo->getDetails()->getRoues());
+        // $form->get('vitesses')->setData($velo->getDetails()->getVitesse());
         // gérer la requête pour voir si le formulaire a été soumis
         $form->handleRequest($request);
         // condition : si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
             // on persiste le velo dans la base de donnée
+            $velo->setUpdatedAt(new \DateTimeImmutable());
             $manager->persist($velo);
             // sauvegarder les modifications
             $manager->flush();
-            //Récuperer les details du vélo associés et les mettre à jour
-            $details = $velo->getDetails();
-            $details->setVelo($velo);
-            $details->setId($request->get('id'));
-            $details->setTaille($form->get('taille')->getData());
-            $details->setRoues($form->get('roues')->getData());
-            $details->setVitesse($form->get('vitesses')->getData());
-            // on persiste les details et le vélo dans la base de donnée
-            $manager->persist($details);
-            $manager->persist($velo);
-            // on sauvegarde les modifications
-            $manager->flush();
+
             // message flach pour avertir l'utilisateur que le velo a été modifié
             $this->addFlash(
                 'success',

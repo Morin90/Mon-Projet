@@ -40,7 +40,6 @@ class AppFixtures extends Fixture
         // Vélos
         for ($i = 1; $i <= 50; $i++) {
             $velo = new Velo();
-            $details = new Details();
 
             // Association aléatoire d'une catégorie à un vélo
             $categorie = $categories[array_rand($categories)];
@@ -50,17 +49,11 @@ class AppFixtures extends Fixture
                 ->setPrix(mt_rand(999, 2499))
                 ->setCategorie($categorie)
                 ->setImageName($this->faker ->imageUrl(640, 480, 'bike', true));
-                
 
-            $details->setTaille($this->faker->word())
-                ->setRoues(mt_rand(0, 9))
-                ->setVitesse(mt_rand(0, 9))
-                ->setVelo($velo);
 
             $velos[] = $velo;
 
             $manager->persist($velo);
-            $manager->persist($details);
         }
 
         // Users

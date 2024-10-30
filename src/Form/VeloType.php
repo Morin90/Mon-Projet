@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Frame;
+use App\Entity\Transmission;
 use App\Entity\Velo;
+use App\Entity\Wheel;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -64,39 +68,57 @@ class VeloType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('taille',TextType::class, [
-                'attr' => [
-                    'class' => 'form-control'   
-                ],
-                'label' => 'Taille du vélo',
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\Positive()
-                ],
-                'mapped' => false
-                ])
-                ->add('vitesses', IntegerType::class, [
-                    'attr' => [
-                        'class' => 'form-control'   
-                    ],
-                    'label' => 'Nombre de vitesses',
-                    'constraints' => [
-                        new Assert\NotBlank(),
-                        new Assert\Positive()
-                    ],
-                    'mapped' => false
-                    ])
-            ->add ('roues', IntegerType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'label' => 'Taille de roues',
-                'constraints' => [ 
-                    new Assert\NotBlank(),  
-                    new Assert\Positive()
-                ],
-                'mapped' => false
-                ])
+            ->add('frames', EntityType::class, [
+                'class' => Frame::class,
+                'choice_label' => 'size',
+                'multiple' => true,
+                'expanded' => true
+            ])
+            ->add('wheels', EntityType::class, [
+                'class' => Wheel::class,
+                'choice_label' => 'size',
+                'multiple' => true,
+                'expanded' => true
+            ])
+            ->add('transmissions', EntityType::class, [
+                'class' => Transmission::class,
+                'choice_label' => 'number',
+                'multiple' => true,
+                'expanded' => true
+            ])
+            // ->add('taille',TextType::class, [
+            //     'attr' => [
+            //         'class' => 'form-control'   
+            //     ],
+            //     'label' => 'Taille du vélo',
+            //     'constraints' => [
+            //         new Assert\NotBlank(),
+            //         new Assert\Positive()
+            //     ],
+            //     'mapped' => false
+            //     ])
+            //     ->add('vitesses', IntegerType::class, [
+            //         'attr' => [
+            //             'class' => 'form-control'   
+            //         ],
+            //         'label' => 'Nombre de vitesses',
+            //         'constraints' => [
+            //             new Assert\NotBlank(),
+            //             new Assert\Positive()
+            //         ],
+            //         'mapped' => false
+            //         ])
+            // ->add ('roues', IntegerType::class, [
+            //     'attr' => [
+            //         'class' => 'form-control'
+            //     ],
+            //     'label' => 'Taille de roues',
+            //     'constraints' => [ 
+            //         new Assert\NotBlank(),  
+            //         new Assert\Positive()
+            //     ],
+            //     'mapped' => false
+            //     ])
             ->add('prix', MoneyType::class, [
                 'attr' => [
                     'class' => 'form-control'
@@ -107,7 +129,7 @@ class VeloType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\Positive(),
-                    new Assert\LessThan(2499.99)
+                    new Assert\LessThan(50000)
                 ]
             ])
             ->add('imageFile', VichImageType::class, [

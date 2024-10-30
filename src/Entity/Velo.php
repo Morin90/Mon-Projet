@@ -64,17 +64,35 @@ class Velo
     #[ORM\OneToMany(targetEntity: Notes::class, mappedBy: 'velo', orphanRemoval: true)]
     private Collection $notes;
 
-    #[ORM\OneToOne(mappedBy: 'velo', cascade: ['persist', 'remove'])]
-    private ?Details $details = null;
-
     #[ORM\Column(length: 25)]
     private ?string $marque = null;
+
+    /**
+     * @var Collection<int, Frame>
+     */
+    #[ORM\ManyToMany(targetEntity: Frame::class, mappedBy: 'velos')]
+    private Collection $frames;
+
+    /**
+     * @var Collection<int, Wheel>
+     */
+    #[ORM\ManyToMany(targetEntity: Wheel::class, mappedBy: 'velos')]
+    private Collection $wheels;
+
+    /**
+     * @var Collection<int, Transmission>
+     */
+    #[ORM\ManyToMany(targetEntity: Transmission::class, mappedBy: 'velos')]
+    private Collection $transmissions;
 
     //  Constructor
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->notes = new ArrayCollection();
+        $this->frames = new ArrayCollection();
+        $this->wheels = new ArrayCollection();
+        $this->transmissions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,23 +254,6 @@ class Velo
         return $this;
     }
 
-    public function getDetails(): ?Details
-    {
-        return $this->details;
-    }
-
-    public function setDetails(Details $details): static
-    {
-        // set the owning side of the relation if necessary
-        if ($details->getVelo() !== $this) {
-            $details->setVelo($this);
-        }
-
-        $this->details = $details;
-
-        return $this;
-    }
-
     public function getMarque(): ?string
     {
         return $this->marque;
@@ -261,6 +262,87 @@ class Velo
     public function setMarque(string $marque): static
     {
         $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Frame>
+     */
+    public function getFrames(): Collection
+    {
+        return $this->frames;
+    }
+
+    public function addFrame(Frame $frame): static
+    {
+        if (!$this->frames->contains($frame)) {
+            $this->frames->add($frame);
+            $frame->addVelo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFrame(Frame $frame): static
+    {
+        if ($this->frames->removeElement($frame)) {
+            $frame->removeVelo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Wheel>
+     */
+    public function getWheels(): Collection
+    {
+        return $this->wheels;
+    }
+
+    public function addWheel(Wheel $wheel): static
+    {
+        if (!$this->wheels->contains($wheel)) {
+            $this->wheels->add($wheel);
+            $wheel->addVelo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWheel(Wheel $wheel): static
+    {
+        if ($this->wheels->removeElement($wheel)) {
+            $wheel->removeVelo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Transmission>
+     */
+    public function getTransmissions(): Collection
+    {
+        return $this->transmissions;
+    }
+
+    public function addTransmission(Transmission $transmission): static
+    {
+        if (!$this->transmissions->contains($transmission)) {
+            $this->transmissions->add($transmission);
+            $transmission->addVelo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransmission(Transmission $transmission): static
+    {
+        if ($this->transmissions->removeElement($transmission)) {
+            $transmission->removeVelo($this);
+        }
 
         return $this;
     }
