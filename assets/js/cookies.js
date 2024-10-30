@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires;
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
 
     // Fonction pour récupérer un cookie
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 // Fonction pour effacer un cookie
     function eraseCookie(name) {        
-        document.cookie = name + '=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = name + '=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 
     // Fonction pour mettre à jour le texte du lien de révocation
@@ -63,12 +63,11 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (cookieConsent === "accepted") {
             eraseCookie(cookieName); // Efface le cookie
-            alert("Votre consentement aux cookies a été réinitialisé. La prochaine fois que vous visiterez cette page, vous pourrez refaire votre choix.");
-            console.log(document.cookie);
-            
+            alert("Votre consentement aux cookies a été réinitialisé. La prochaine fois que vous visiterez cette page, vous pourrez refaire votre choix.");  
             location.reload(); // Rafraîchit la page pour afficher la modale
         } else {
             cookieModal.style.display = "block"; // Réouvre la modale
+            
         }
     });
 });

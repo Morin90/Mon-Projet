@@ -62,7 +62,13 @@
 
 		<!-- Bouton de révocation des cookies -->
 		<div class="cookie-revoke" style="display: {{ app.request.cookies.get('cookiesAccepted') ? 'none' : 'block' }}">
-			<button href="#" id="revokeCookies" class="text-white">Révoquer le consentement des cookies</button>
+			<button href="#" id="revokeCookies" class="text-white">
+			{% if app.request.cookies.get('cookiesAccepted') == 'accepted' %}
+						Révoquer le consentement des cookies
+			{% else %}
+				Accepter le consentement des cookies
+			{% endif %}
+			</button>
 		</div>
 
 	</div>
