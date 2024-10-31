@@ -19,6 +19,7 @@
                     <li class="nav-item nav-separator">
                         <a class="nav-link text-dark" href="{{ path('admin_dashboard') }}">
                             Bureau Admin
+                            <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                 {% endif %}
@@ -27,6 +28,7 @@
                     <li class="nav-item nav-separator">
                         <a class="nav-link text-dark" href="{{ path('user.edit', {'id': app.user.id}) }}">
                             Profil
+                            <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                 {% endif %}
@@ -34,11 +36,13 @@
                 <li class="nav-item nav-separator">
                     <a class="nav-link text-dark" href="{{ path('category.show') }}">
                         Catégories
+                        <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item nav-separator">
                     <a class="nav-link text-dark" href="{{ path('velo.showall') }}">
                         Vélos
+                        <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
             </ul>
@@ -67,3 +71,11 @@
         {% endif %}
     </div>
 </nav>
+{# Détail
+
+    visually-hidden : Cette classe (proposée par Bootstrap) cache le contenu visuellement, mais elle reste accessible aux lecteurs d'écran. Elle est souvent utilisée pour améliorer l’accessibilité d’une page sans encombrer l’interface visuelle.
+    (current) : Ce texte signifie généralement que cet élément de menu est l'élément "actif" ou "en cours". Pour les utilisateurs de lecteurs d'écran, cela indique que cette page est actuellement ouverte.
+
+Utilisation pratique
+
+Dans une barre de navigation, par exemple, cette balise permet d'indiquer clairement quelle page est en cours de consultation pour les utilisateurs non-voyants, tout en restant invisible pour les utilisateurs voyants. #}

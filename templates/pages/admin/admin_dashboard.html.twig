@@ -2,21 +2,47 @@
 {% block title %}Kraken - Bureau Admin
 {% endblock %}
 {% block body %}
+	<div class="container mt-4 text-center" style="color: var(--b-violet)">
+		<h1>Bureau Administrateur</h1>
 
-	{% if is_granted('ROLE_ADMIN') %}
+		<div class="flex-box">
+			{% if is_granted('ROLE_ADMIN') %}
 
-		<div class="count text-center">
-		<a href="{{ path('velo') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">
-			Vélos admin
-		</a>
-        <div/>
-<img src="{{ asset('img/Group4.png') }}" alt="Logo du magasin Kraken" class="img-fluid mt-5 " style="width: 15rem">
-        <div class="count text-center">
-		<a href="{{ path('admin_category.index') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">
-			Catégories admin
-		</a>
-		<div/>
-	{% endif %}
+				<div class="card text-center" style="width: 25rem;">
+					<div class="card-header">
+						Kraken Admin
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Admin vélos</h5>
+						<p class="card-text">Votre espace dédié à la création de vélos, modification et suppression.</p>
+						<a href="{{ path('velo') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">Gestion des vélos</a>
+					</div>
+				</div>
+				<img src="{{ asset('img/Group4.png') }}" alt="Logo du magasin Kraken" class="img-fluid mt-5 " style="width: 18rem ; height: 18rem; ">
+				<div class="card text-center" style="width: 25rem;">
+					<div class="card-header">
+						Kraken Admin
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Admin catégories</h5>
+						<p class="card-text">Votre espace dédié à la création de catégories, modification et suppression.</p>
+						<a href="{{ path('admin_category.index') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">Gestion des catégories</a>
+					</div>
+				</div>
+
+				<div class="card text-center" style="width: 25rem;">
+					<div class="card-header">
+						Kraken Admin
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Admin infos</h5>
+						<p class="card-text">Votre espace dédié à la création d'informations reliées aux vélos, modification et suppression.</p>
+						<a href="{{ path('admin_infos_index') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">Gestion des infos</a>
+					</div>
+				</div>
 
 
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}

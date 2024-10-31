@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des {{ 'brand'|capitalize }}{% endblock %}
+
+{% block body %}
+<a href="{{ path('admin_infos_index') }}" class="btn btn-custom  mt-5" role="button" style="width: 5rem; height: 2.75rem;">Retour</a>
+<div class="container mt-5">
+    <h1 class="text-center">Gestion des {{ 'marques'|capitalize }}</h1>
+    
+    {# Formulaire d'ajout #}
+    <div class="mt-4">
+        <h3>Ajouter un(e) {{ 'marque'|capitalize }}</h3>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+    
+    {# Liste des entités existantes #}
+    <div class="mt-5 text-center" style="width: 50%; margin: auto;">
+        <h3>Liste des {{ 'marques'|capitalize }}s existant(e)s</h3>
+        <table class="table table-hover table-sm align-middle">
+            <thead>
+                <tr class='table col-md-4'>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr class="table-primary ">
+                        <td>{{ item.name }}</td>
+                        <td>
+                            <a href="{{ path('admin_infos_delete_brand', { 'id': item.id }) }}" class="btn btn-danger btn-sm" onclick="return confirm('Voulez-vous vraiment supprimer cet élément ?');">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2" class="text-center">Aucun(e) marques trouvé(e).</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

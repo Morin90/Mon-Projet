@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Informations liées aux vélos
+{% endblock %}
+
+{% block body %}
+	<a href="{{ path('admin_dashboard') }}" class="btn btn-custom  mt-5" role="button" style="width: 5rem; height: 2.75rem;">Retour</a>
+	<div class="mt-4 text-center" style="color: var(--b-violet)">
+		<h1>Gestion des Informations Associées aux Vélos</h1>
+    </div>
+		<div class="flex-box offset3 mt-5">
+
+			<div class="card text-center" style="width: 25rem;">
+				<div class="card-header">
+					Kraken Admin
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">Gestion de la taille de cadre</h5>
+					<p class="card-text">Votre espace dédié à la création de tailles de cadre et suppression.</p>
+					<a href="{{ path('admin_infos_manage_frame', { type: 'frame' }) }}" class="btn btn-custom  mt-5">Gérer les Cadres</a>
+				</div>
+				<div/>
+			</div>
+		</div>
+
+		<div class="card text-center" style="width: 25rem;">
+			<div class="card-header">
+				Kraken Admin
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Gestion des noms de marques</h5>
+				<p class="card-text">Votre espace dédié à la création de noms de marques et suppression.</p>
+				<a href="{{ path('admin_infos_manage_brand', { type: 'brand' }) }}" class="btn btn-custom  mt-5">Gérer les Marques</a>
+			</div>
+			<div/>
+		</div>
+	</div>
+
+	<div class="card text-center" style="width: 25rem;">
+		<div class="card-header">
+			Kraken Admin
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">Gestion des tailles de roues</h5>
+			<p class="card-text">Votre espace dédié à la création de taille de roues et suppression.</p>
+			<a href="{{ path('admin_infos_manage_wheel', { type: 'wheel' }) }}" class="btn btn-custom  mt-5">Gérer les Roues</a>
+		</div>
+		<div/>
+	</div>
+</div>
+
+<div class="card text-center" style="width: 25rem;">
+	<div class="card-header">
+		Kraken Admin
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Gestion du nombre de vitesses</h5>
+		<p class="card-text">Votre espace dédié à la création du nombre de vitesses et suppression.</p>
+		<a href="{{ path('admin_infos_manage_transmission', { type: 'transmission' }) }}" class="btn btn-custom  mt-5">Gérer les Vitesses</a>
+	</div>
+	<div/>
+</div></div></div>{% endblock %}
