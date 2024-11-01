@@ -1,5 +1,7 @@
 twig:
     file_name_pattern: '*.twig'
+    globals:
+        breadcrumb_trail: '@APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail'
 
 when@test:
     twig:

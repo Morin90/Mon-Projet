@@ -23,5 +23,24 @@ services:
     App\EntityListener\:
         resource: '../src/EntityListener/'
         tags: ["doctrine.orm.entity_listener"]
+
+    # Add the BreadcrumbTrail service here
+    APY\BreadcrumbTrailBundle\BreadcrumbTrail: '@apy_breadcrumb_trail.breadcrumb_trail'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Ajout du service AnnotationReader
+    annotation_reader:
+        class: Doctrine\Common\Annotations\AnnotationReader
+
+    # Création d'un cache pour le lecteur d'annotations
+    doctrine.annotations.cached_reader:
+        class: Doctrine\Common\Annotations\PsrCachedReader
+        arguments:
+            - '@annotation_reader' # le service d'annotations
+            - '@cache.app'         # le cache Symfony
+            - '%kernel.debug%'     # permet de désactiver le cache en mode debug
+
+    # Alias pour l'interface Reader, attendu par APY BreadcrumbTrail
+    Doctrine\Common\Annotations\Reader: '@doctrine.annotations.cached_reader'

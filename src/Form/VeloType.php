@@ -128,6 +128,9 @@ class VeloType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
                 'label' => 'Image',
+                'label_attr' => [
+                    'class' => 'imgform_size'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

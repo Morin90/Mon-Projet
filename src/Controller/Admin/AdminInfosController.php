@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Brand;
 use App\Entity\Frame;
 use App\Entity\Wheel;
-use App\Form\VeloType;
 use App\Form\BrandType;
 use App\Form\FrameType;
 use App\Form\WheelType;
@@ -54,7 +53,7 @@ class AdminInfosController extends AbstractController
 
         return $this->render('pages/admin/manage_frame.html.twig', [
             'form' => $form->createView(),
-            'items' => $items,
+            'items' => $items
         ]);
     }
 

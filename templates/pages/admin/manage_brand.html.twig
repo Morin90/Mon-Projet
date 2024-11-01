@@ -6,7 +6,17 @@
 <a href="{{ path('admin_infos_index') }}" class="btn btn-custom  mt-5" role="button" style="width: 5rem; height: 2.75rem;">Retour</a>
 <div class="container mt-5">
     <h1 class="text-center">Gestion des {{ 'marques'|capitalize }}</h1>
-    
+    <div class="d-flex justify-content-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_dashboard') }}">Retour à "Bureau Administrateur"</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a href="{{ path('admin_infos_index') }}">Retour à "Gestion des informations"</a>
+                        </li>
+                        <li class="breadcrumb-item active">Gestion des marques</li>
+                    </ol>
+                </div>
     {# Formulaire d'ajout #}
     <div class="mt-4">
         <h3>Ajouter un(e) {{ 'marque'|capitalize }}</h3>

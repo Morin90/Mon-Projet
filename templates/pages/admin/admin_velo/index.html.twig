@@ -27,10 +27,10 @@
 				</h4>
 			</div>
 
-			<table class="table table-hover mt-4 border border-primary-dark align-middle">
-				<thead>
+			<table class="table-hover border mt-4  align-middle">
+				<thead class="table text-center">
 					<tr>
-						<th scope="col" class="col-md-2 text-center">Image</th>
+						<th scope="col" class=" col-md-2 text-center">Image</th>
 						<th scope="col">Nom</th>
 						<th scope="col">Marque</th>
 						<th scope="col">Prix</th>
@@ -43,7 +43,7 @@
 				<tbody>
 					{% for velo in velos %}
 
-						<tr class="table-primary border border-primary-dark">
+						<tr class="table-primary text-center">
 							<th scope="row"><img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="img-fluid img-thumbnail" style="width: 15rem; height: 10rem" alt="{{ velo.imageName}}"></th>
 							<td>{{ velo.name}}</td>
 							<td>{{ velo.brand.name }}</td>

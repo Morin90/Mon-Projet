@@ -4,11 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Velo;
 use App\Repository\VeloRepository;
+use App\Repository\NotesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\NotesRepository;
 
 class VeloController extends AbstractController
 {
@@ -38,8 +38,10 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
     ]);
 }
     #[Route('/velo/showall', name: 'velo.showall', methods: ['GET'])]
-public function showAllVelo(VeloRepository $repository, Request $request): Response
+    
+    public function showAllVelo(VeloRepository $repository, Request $request): Response
 {
+
     // Récupère le mot-clé de recherche à partir des paramètres de la requête (s'il y en a un)
     $keyword = $request->query->get('q');
 

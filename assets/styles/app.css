@@ -286,10 +286,8 @@ footer {
     border: 1px solid #0b0b0b; /* Couleur et style de la bordure verticale */
 }
 
-
-
 @media (max-width: 600px) {
-
+    
     .container {
         padding: 10px;
     }
