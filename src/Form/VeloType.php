@@ -102,7 +102,7 @@ class VeloType extends AbstractType
                 'expanded' => true,
                 'by_reference' => false,
                 'attr' => [
-                    'class' => 'example-wrapper p-3'
+                    'class' => 'example-wrapper'
                 ],
                 'constraints' => [
                     new Assert\NotBlank()
