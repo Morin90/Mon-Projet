@@ -49,7 +49,7 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
 
     // Récupère la liste de tous les vélos ordonnés selon une méthode spécifique du repository
     $velos = $repository->findAllOrder();
-    $categories = $repoCategorie->findAll();
+    $categories = $repoCategorie->findByAllOrder();
     // Si un mot-clé de recherche est présent, utilise une méthode de recherche pour filtrer les vélos
     if ($keyword !== null) {
         $velos = $repository->searchVelo($keyword);

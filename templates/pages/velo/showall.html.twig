@@ -11,21 +11,22 @@
 
 		<h1>Tout nos vélos
         {% if currentCategory %} 
-        - ({{ currentCategory.name }})
+        - 
+		({{ currentCategory.name }})
         {% endif %}
         </h1>
 		<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-				Toutes les catégories
+			<button class="btn-custom dropdown-toggle border border-radius-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Rechercher par catégorie
 			</button>
 			<ul class="dropdown-menu">
 				{% for categorie in categories %}
 					<li>
-						<a class="dropdown-item" href="{{ path('velo.showall', {'categorie': categorie.id})}}">{{ categorie.name}}</a>
+						<a class="dropdown-item" href="{{ path('velo.showall', {'categorie': categorie.id})}}" role="button">{{ categorie.name}}</a>
 					</li>
 				{% endfor %}
                 <li>
-						<a class="dropdown-item" href="{{ path('velo.showall')}}">Toutes les catégories</a>
+						<a class="dropdown-item" href="{{ path('velo.showall')}}">Tout les vélos</a>
 					</li>
 			</ul>
 		</div>
