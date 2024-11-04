@@ -2,7 +2,12 @@
 
 {% block title %}Gestion des des tailles de {{ 'cadre'|capitalize }}{% endblock %}
 
-{% block body %}         
+{% block body %}  
+{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div> 
+        {% endfor %}      
 <a href="{{ path('admin_infos_index') }}" class="btn btn-custom  mt-5" role="button" style="width: 5rem; height: 2.75rem;">Retour</a>
 <div class="container mt-5">
     <h1 class="text-center">Gestion des tailles de {{ 'cadre'|capitalize }}</h1>
@@ -55,5 +60,8 @@
             </tbody>
         </table>
     </div>
+    <div class="navigation d-flex justify-content-center mt-4">
+				{{ knp_pagination_render(items) }}
+			</div>
 </div>
 {% endblock %}

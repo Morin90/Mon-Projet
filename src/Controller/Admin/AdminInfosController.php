@@ -11,6 +11,7 @@ use App\Form\WheelType;
 use App\Entity\Transmission;
 use App\Form\TransmissionType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,10 +33,14 @@ class AdminInfosController extends AbstractController
         return $this->render('pages/admin/admin_infos.html.twig');
     }
     #[Route('/manage/frame', name: 'manage_frame')]
-    public function manageFrame(Request $request): Response
+    public function manageFrame(Request $request,  PaginatorInterface $paginator): Response
     {
         // Récupération de toutes les entités pour le type donné
-        $items = $this->entityManager->getRepository(Frame::class)->findAll();
+        $items = $paginator->paginate(
+            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $request->query->getInt('page', 1),
+            10 /*limit per page*/
+        );
         
         // Création du formulaire pour ajouter un nouvel élément
         $form = $this->createForm(FrameType::class, new Frame());
@@ -74,11 +79,14 @@ class AdminInfosController extends AbstractController
     }
 
     #[Route('/manage/brand', name: 'manage_brand')]
-    public function manageBrand(Request $request): Response
+    public function manageBrand(Request $request,  PaginatorInterface $paginator): Response
     {
         // Récupération de toutes les entités pour le type donné
-        $items = $this->entityManager->getRepository(Brand::class)->findAll();
-        
+        $items = $paginator->paginate(
+            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $request->query->getInt('page', 1),
+            10 /*limit per page*/
+        );
         // Création du formulaire pour ajouter un nouvel élément
         $form = $this->createForm(BrandType::class, new Brand());
 
@@ -116,10 +124,14 @@ class AdminInfosController extends AbstractController
     }
 
     #[Route('/manage/wheel', name: 'manage_wheel')]
-    public function manageWheel(Request $request): Response
+    public function manageWheel(Request $request,  PaginatorInterface $paginator): Response
     {
         // Récupération de toutes les entités pour le type donné
-        $items = $this->entityManager->getRepository(Wheel::class)->findAll();
+        $items = $paginator->paginate(
+            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $request->query->getInt('page', 1),
+            10 /*limit per page*/
+        );
         
         // Création du formulaire pour ajouter un nouvel élément
         $form = $this->createForm(WheelType::class, new Wheel());
@@ -158,10 +170,14 @@ class AdminInfosController extends AbstractController
     }
 
     #[Route('/manage/transmission', name: 'manage_transmission')]
-    public function manageTransmission(Request $request): Response
+    public function manageTransmission(Request $request,  PaginatorInterface $paginator): Response
     {
         // Récupération de toutes les entités pour le type donné
-        $items = $this->entityManager->getRepository(Transmission::class)->findAll();
+        $items = $paginator->paginate(
+            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $request->query->getInt('page', 1),
+            10 /*limit per page*/
+        );
         
         // Création du formulaire pour ajouter un nouvel élément
         $form = $this->createForm(TransmissionType::class, new Transmission());
