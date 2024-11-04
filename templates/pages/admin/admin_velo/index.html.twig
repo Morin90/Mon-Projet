@@ -36,6 +36,7 @@
 						<th scope="col">Prix</th>
 						<th scope="col">Categorie</th>
 						<th scope="col">Date de création</th>
+						<th scope="col">Date de modification</th>
 						<th scope="col">Edition</th>
 						<th scope="col">Suppression</th>
 					</tr>
@@ -51,6 +52,7 @@
 
 							<td>{{ velo.categorie ? velo.categorie.name : 'aucune'}}</td>
 							<td>{{ velo.createdAt|date('d/m/Y') }}</td>
+							<td>{{ velo.updatedAt|date('d/m/Y') }}</td>
 							<td>
 								<a href=" {{ path('velo.edit', {'id': velo.id}) }}" class="btn btn-info" role="button">Editer</a>
 							</td>
