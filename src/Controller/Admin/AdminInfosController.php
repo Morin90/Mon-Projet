@@ -37,7 +37,7 @@ class AdminInfosController extends AbstractController
     {
         // Récupération de toutes les entités pour le type donné
         $items = $paginator->paginate(
-            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $this->entityManager->getRepository(Frame::class)->findAll(),
             $request->query->getInt('page', 1),
             10 /*limit per page*/
         );
@@ -128,7 +128,7 @@ class AdminInfosController extends AbstractController
     {
         // Récupération de toutes les entités pour le type donné
         $items = $paginator->paginate(
-            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $this->entityManager->getRepository(Wheel::class)->findAll(),
             $request->query->getInt('page', 1),
             10 /*limit per page*/
         );
@@ -174,7 +174,7 @@ class AdminInfosController extends AbstractController
     {
         // Récupération de toutes les entités pour le type donné
         $items = $paginator->paginate(
-            $this->entityManager->getRepository(Brand::class)->findAll(),
+            $this->entityManager->getRepository(Transmission::class)->findAll(),
             $request->query->getInt('page', 1),
             10 /*limit per page*/
         );
