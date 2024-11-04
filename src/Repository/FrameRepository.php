@@ -16,20 +16,14 @@ class FrameRepository extends ServiceEntityRepository
         parent::__construct($registry, Frame::class);
     }
 
-    //    /**
-    //     * @return Frame[] Returns an array of Frame objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('f.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findByOrderAsc(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->orderBy('f.size', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     //    public function findOneBySomeField($value): ?Frame
     //    {

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Entity\Velo;
+use App\Repository\CategorieRepository;
 use App\Repository\VeloRepository;
 use App\Repository\NotesRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,9 +39,9 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
         // 'roues' => $roues              // Roues du vélo
     ]);
 }
-    #[Route('/velo/showall', name: 'velo.showall', methods: ['GET'])]
+    #[Route('/velo/showall/{categorie}', name: 'velo.showall', methods: ['GET'])]
     
-    public function showAllVelo(VeloRepository $repository, Request $request): Response
+    public function showAllVelo(VeloRepository $repository, Request $request, CategorieRepository $repoCategorie, ?Categorie $categorie=null): Response
 {
 
     // Récupère le mot-clé de recherche à partir des paramètres de la requête (s'il y en a un)
@@ -47,15 +49,20 @@ public function showVelo(Velo $velo, VeloRepository $repository , NotesRepositor
 
     // Récupère la liste de tous les vélos ordonnés selon une méthode spécifique du repository
     $velos = $repository->findAllOrder();
-
+    $categories = $repoCategorie->findAll();
     // Si un mot-clé de recherche est présent, utilise une méthode de recherche pour filtrer les vélos
     if ($keyword !== null) {
         $velos = $repository->searchVelo($keyword);
+    
     }
-
+    if ($categorie) {
+        $velos = $repository->findByCategorie($categorie);
+    }
     // Retourne la vue 'showall.html.twig' avec la liste des vélos filtrée (ou complète si pas de mot-clé)
     return $this->render('pages/velo/showall.html.twig', [
-        'velos' => $velos // Liste des vélos à afficher
+        'velos' => $velos,
+        'categories' => $categories,
+        'currentCategory' => $categorie
     ]);
 }
 }

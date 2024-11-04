@@ -4,62 +4,83 @@
 {% endblock %}
 
 {% block body %}
-<div class="breadcrumb">
-		{{ apy_breadcrumb_trail_render() }} 
-    </div>
-    <div class="container mt-4 text-center" style="color: var(--b-violet)">
-			
-        <h1>Tout nos vélos</h1>
+	<div class="breadcrumb">
+		{{ apy_breadcrumb_trail_render() }}
+	</div>
+	<div class="container mt-4 text-center" style="color: var(--b-violet)">
 
-        <div class="flex-box">
-            {# Boucle sur tous les vélos disponibles dans la variable `velos` #}
-            {% for velo in velos %}
-                {# Initialisation de la variable `note` à 0 pour chaque vélo #}
-                {% set note = 0 %}
-                
-                {# Boucle sur les notes associées à chaque vélo #}
-                {% for item in velo.notes %}
-                    {# Ajout de chaque note à la somme totale des notes du vélo #}
-                    {% set note = note + item.rating %}
-                {% endfor %}
-                
-                {# Si le vélo a au moins une note, calcul de la moyenne des notes #}
-                {% if velo.notes|length > 0 %}
-                    {% set note = note / velo.notes|length %}
-                {% endif %}
-                
-                
-                <div class="card3 " style="width: 20rem; min-height:37rem;">
-                    <a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn">
-                        <h2 style="color: var(--b-violet)">{{ velo.brand.name}}</h2>
-                        {# Image du vélo, récupérée depuis le dossier `images/velos` grâce à VichUploader #}
-                        <img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top" style="width: 18rem; height: 18rem" alt="{{ velo.name}}">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ velo.name}}</h3>
-                            {# Description du vélo, limitée à 100 caractères maximum avec des points de suspension si trop longue #}
-                            <p class="card-text">
-                                {{ velo.description|length > 100 ? velo.description|slice(0, 100) ~ '...' : velo.description }}
-                            </p>
-                    </a>
+		<h1>Tout nos vélos
+        {% if currentCategory %} 
+        - ({{ currentCategory.name }})
+        {% endif %}
+        </h1>
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Toutes les catégories
+			</button>
+			<ul class="dropdown-menu">
+				{% for categorie in categories %}
+					<li>
+						<a class="dropdown-item" href="{{ path('velo.showall', {'categorie': categorie.id})}}">{{ categorie.name}}</a>
+					</li>
+				{% endfor %}
+                <li>
+						<a class="dropdown-item" href="{{ path('velo.showall')}}">Toutes les catégories</a>
+					</li>
+			</ul>
+		</div>
 
-                    {# Section pour afficher les étoiles de notation du vélo et attributs personnalisé pour identifier le vélo et l'utilisateur qui va noter le vélo #}
-                    <div data-velo-id="{{ velo.id }}" data-user-id="{{ app.user.id|default(0) }}" class="mt-5">
-                        {# Boucle pour afficher 5 étoiles #}
-                        {% for i in 1..5 %}
-                            {# Si l'indice `i` est inférieur ou égal à la moyenne des notes, afficher une étoile dorée (remplie) #}
-                            {% if i <= note %}
-                                <i class="fas fa-star" data-note="{{note}}" data-noted="{{note > 0 ? true : false}}" style="color: gold"></i>
-                                {# étoile or (remplie) #}
-                            {% else %}
-                                {# Sinon, afficher une étoile vide #}
-                                <i class="far fa-star" data-noted="{{note > 0 ? true : false}}"style="color: black"></i>
-                                {# étoile blanche (vide) #}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+		<div
+			class="flex-box">
+			{# Boucle sur tous les vélos disponibles dans la variable `velos` #}
+			{% for velo in velos %}
+				{# Initialisation de la variable `note` à 0 pour chaque vélo #}
+				{% set note = 0 %}
+
+				{# Boucle sur les notes associées à chaque vélo #}
+				{% for item in velo.notes %}
+					{# Ajout de chaque note à la somme totale des notes du vélo #}
+					{% set note = note + item.rating %}
+				{% endfor %}
+
+				{# Si le vélo a au moins une note, calcul de la moyenne des notes #}
+				{% if velo.notes|length > 0 %}
+					{% set note = note / velo.notes|length %}
+				{% endif %}
+
+
+				<div class="card3 " style="width: 20rem; min-height:37rem;">
+					<a href="{{ path('velo.show', {'id': velo.id}) }}" class="btn">
+						<h2 style="color: var(--b-violet)">{{ velo.brand.name}}</h2>
+						{# Image du vélo, récupérée depuis le dossier `images/velos` grâce à VichUploader #}
+						<img src="{{ asset('images/velos/' ~ velo.imageName) }}" class="card-img-top" style="width: 18rem; height: 18rem" alt="{{ velo.name}}">
+						<div class="card-body">
+							<h3 class="card-title">{{ velo.name}}</h3>
+							{# Description du vélo, limitée à 100 caractères maximum avec des points de suspension si trop longue #}
+							<p class="card-text">
+								{{ velo.description|length > 100 ? velo.description|slice(0, 100) ~ '...' : velo.description }}
+							</p>
+						</a>
+
+						{# Section pour afficher les étoiles de notation du vélo et attributs personnalisé pour identifier le vélo et l'utilisateur qui va noter le vélo #}
+						<div
+							data-velo-id="{{ velo.id }}" data-user-id="{{ app.user.id|default(0) }}" class="mt-5">
+							{# Boucle pour afficher 5 étoiles #}
+							{% for i in 1..5 %}
+								{# Si l'indice `i` est inférieur ou égal à la moyenne des notes, afficher une étoile dorée (remplie) #}
+								{% if i <= note %}
+									<i class="fas fa-star" data-note="{{note}}" data-noted="{{note > 0 ? true : false}}" style="color: gold"></i>
+									{# étoile or (remplie) #}
+								{% else %}
+									{# Sinon, afficher une étoile vide #}
+									<i class="far fa-star" data-noted="{{note > 0 ? true : false}}" style="color: black"></i>
+									{# étoile blanche (vide) #}
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
