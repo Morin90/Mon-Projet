@@ -2,16 +2,19 @@
 
 namespace App\Form;
 
+use App\Entity\Velo;
 use App\Entity\Brand;
 use App\Entity\Frame;
-use App\Entity\Transmission;
-use App\Entity\Velo;
 use App\Entity\Wheel;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use App\Entity\Transmission;
+use App\Repository\BrandRepository;
+use App\Repository\FrameRepository;
+use App\Repository\WheelRepository;
 use Symfony\Component\Form\AbstractType;
+use App\Repository\TransmissionRepository;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -50,6 +53,10 @@ class VeloType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-2'
                 ],
+                'query_builder' => function (BrandRepository $brand) {
+                    return $brand->createQueryBuilder('b')
+                        ->orderBy('b.name', 'ASC');
+                },
                 'constraints' => [
                     new Assert\NotBlank()
                 ]
@@ -78,6 +85,10 @@ class VeloType extends AbstractType
                 'attr' => [
                     'class' => 'example-wrapper'
                 ],
+                'query_builder' => function (FrameRepository $frame) {
+                    return $frame->createQueryBuilder('f')
+                        ->orderBy('f.size', 'ASC');
+                },
                 'constraints' => [
                     new Assert\NotBlank()
                 ]
@@ -91,6 +102,10 @@ class VeloType extends AbstractType
                 'attr' => [
                     'class' => 'example-wrapper'
                 ],
+                'query_builder' => function (WheelRepository $wheel) {
+                    return $wheel->createQueryBuilder('w')
+                        ->orderBy('w.size', 'ASC');
+                },
                 'constraints' => [
                     new Assert\NotBlank()
                 ]
@@ -104,6 +119,10 @@ class VeloType extends AbstractType
                 'attr' => [
                     'class' => 'example-wrapper'
                 ],
+                'query_builder' => function (TransmissionRepository $transmission) {
+                    return $transmission->createQueryBuilder('t')
+                        ->orderBy('t.number', 'ASC');
+                },
                 'constraints' => [
                     new Assert\NotBlank()
                 ]
