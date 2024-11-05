@@ -21,8 +21,6 @@
 
 ###> symfony/asset-mapper ###
 /public/assets/
-/public/images/velos/*
-!/public/images/velos/logo-color.png
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
