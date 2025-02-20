@@ -12,6 +12,7 @@ class AdminDashboardController extends AbstractController
     #[Route('/dashboard', name: 'admin_dashboard')]
     public function index(): Response
     {
+        //Verifier si l'utilisateur est administrateur
         if (!$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash('error', 'Accès refusé. Vous devez être administrateur pour accéder à cette section.');
             return $this->redirectToRoute('home.html.twig'); 

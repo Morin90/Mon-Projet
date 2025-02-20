@@ -4,9 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="breadcrumb">
-		{{ apy_breadcrumb_trail_render() }}
-	</div>
+	
 	<div class="container mt-4 text-center" style="color: var(--b-violet)">
 
 		<h1>Tout nos vélos
@@ -20,12 +18,15 @@
 				Rechercher par catégorie
 			</button>
 			<ul class="dropdown-menu">
+			{#Boucle sur toutes les catégorie pour les afficher dans le dropdown  #}
 				{% for categorie in categories %}
 					<li>
+					{#bouton pour cliquer sur une catégorie  #}
 						<a class="dropdown-item" href="{{ path('velo.showall', {'categorie': categorie.id})}}" role="button">{{ categorie.name}}</a>
 					</li>
 				{% endfor %}
                 <li>
+				{# bouton pour revenir à la liste de tout les vélos #}
 						<a class="dropdown-item" href="{{ path('velo.showall')}}">Tout les vélos</a>
 					</li>
 			</ul>

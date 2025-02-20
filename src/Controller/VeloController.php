@@ -19,7 +19,7 @@ class VeloController extends AbstractController
     #[Route('/velo/show/{id}', name: 'velo.show', methods: ['GET'])]
 public function showVelo(Velo $velo, VeloRepository $repository , NotesRepository $notesRepository): Response
 {
-    // Récupère les informations complètes du vélo en utilisant son ID
+    // Récupère les informations complètes du vélo en utilisant son id
     $velo = $repository->find($velo->getId());
 
     // Récupère les détails spécifiques du vélo (taille, roues, etc.)

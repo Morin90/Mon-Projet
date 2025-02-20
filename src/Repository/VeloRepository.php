@@ -18,7 +18,7 @@ class VeloRepository extends ServiceEntityRepository
 
     public function findAllOrder(): array
 {
-    // Création d'un QueryBuilder pour l'entité 'u' (qui représente l'entité associée à ce repository)
+//Query Builder est le constrcuteur de requetes sql 
     return $this->createQueryBuilder('u')
         // Ajoute une sélection supplémentaire pour inclure les entités 'notes' associées à 'u'
         ->addSelect('notes')
@@ -34,7 +34,7 @@ class VeloRepository extends ServiceEntityRepository
 }
 public function searchVelo($keyword)
 {
-    // Création d'un QueryBuilder pour l'entité 'u'
+
     return $this->createQueryBuilder('u')
         // Ajoute une condition pour filtrer les entités dont le nom ('name') contient le mot-clé recherché
         ->andWhere('u.name LIKE :keyword')

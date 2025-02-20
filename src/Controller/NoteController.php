@@ -11,17 +11,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\Length;
+
 
 class NoteController extends AbstractController
 {
     #[Route('/note', name: 'app.note', methods: ['GET'])]
     public function note(
-        Request $request,
-        EntityManagerInterface $manager,
-        VeloRepository $veloRepository,
-        UserRepository $userRepository,
-        NotesRepository $notesRepository
+        Request $request,EntityManagerInterface $manager,VeloRepository $veloRepository,UserRepository $userRepository,NotesRepository $notesRepository
     ): Response {
         $note = new Notes();
         $velo = $veloRepository->find((int)$request->query->get('veloId'));
@@ -34,7 +30,7 @@ class NoteController extends AbstractController
                 $note->setRating((int)$request->query->get('note')+1);
                 $manager->persist($note);
                 $manager->flush();
-                return $this->json(['message' => 'added'], 201);
+                return $this->json(['message' => 'ajouté'], 201);
             }
         }
         return $this->json(['message' => 'Vous avez deja noté ce velo'], 400);

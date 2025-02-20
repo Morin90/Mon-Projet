@@ -3,7 +3,7 @@
     --b-violet: #545ff3;
     --b-violet2: rgb(68, 78, 216);
     --box-shadow: rgb(136, 136, 130);
-    --bg-white: white;
+    --bg-white: rgb(245, 243, 243);
     --b-flex: #ccc;
     --text-red: #ff1717;
 }
@@ -119,7 +119,7 @@ body {
     cursor: pointer;
     transition: color 0.2s;
 }
-
+/* Couleur lors du survol de l'etoile */
 .star:hover,
 .star.selected {
     color: gold;
@@ -227,6 +227,8 @@ footer {
     color: var(--bg-white) !important; /* Met la couleur de texte en blanc */
     transform: translateY(-2px) !important; /* Laisse une petite ombre sous le bouton lors du survol */
 }
+
+/* Style pour la séparation des items dans barre de navigation */
 .nav-separator::before {
     content: "";
     position: absolute;
