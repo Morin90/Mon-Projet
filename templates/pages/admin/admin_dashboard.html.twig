@@ -8,19 +8,19 @@
 		<div class="flex-box">
 			{% if is_granted('ROLE_ADMIN') %}
 
-				<div class="card text-center" style="width: 25rem;">
-					<div class="card-header">
+				<div class="card text-center" style="width: 25rem; background-color: white;">
+					<div class="card-header" style="background-color: var(--bg-blue); border-radius: 50px;" >
 						Kraken Admin
 					</div>
-					<div class="card-body">
+					<div class="card-body" >
 						<h5 class="card-title">Admin vélos</h5>
 						<p class="card-text">Votre espace dédié à la création de vélos, modification et suppression.</p>
 						<a href="{{ path('velo') }}" class="btn btn-custom  mt-5" role="button" style="width: 16rem; height: 2.75rem;">Gestion des vélos</a>
 					</div>
 				</div>
 				<img src="{{ asset('img/Group4.png') }}" alt="Logo du magasin Kraken" class="img-fluid mt-5 " style="width: 18rem ; height: 18rem; ">
-				<div class="card text-center" style="width: 25rem;">
-					<div class="card-header">
+				<div class="card text-center" style="width: 25rem; background-color: white;">
+					<div class="card-header" style="background-color: var(--bg-blue); border-radius: 50px;">
 						Kraken Admin
 					</div>
 					<div class="card-body">
@@ -30,8 +30,8 @@
 					</div>
 				</div>
 
-				<div class="card text-center" style="width: 25rem;">
-					<div class="card-header">
+				<div class="card text-center" style="width: 25rem; background-color: white">
+					<div class="card-header" style="background-color: var(--bg-blue); border-radius: 50px;">
 						Kraken Admin
 					</div>
 					<div class="card-body">

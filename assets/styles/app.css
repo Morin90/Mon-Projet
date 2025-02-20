@@ -161,7 +161,7 @@ body {
     top: 10%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    color: white;
+    color: rgb(245, 244, 244);
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     text-align: center;
